@@ -2,24 +2,24 @@
     "name": "retail_app",
     "version": "0.1.0",
     "private": true,
-    "devDependencies": {
-        "jest-expo": "~18.0.0",
-        "npm": "4.6.1",
-        "react-devtools": "^2.4.0",
-        "react-native-scripts": "0.0.40",
-        "react-test-renderer": "16.0.0-alpha.12"
-    },
     "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
     "scripts": {
         "start": "react-native-scripts start",
         "eject": "react-native-scripts eject",
         "android": "react-native-scripts android",
         "ios": "react-native-scripts ios",
-        "test": "node node_modules/jest/bin/jest.js --watch",
+        "test": "node node_modules/jest/bin/jest.js",
         "devtools": "react-devtools"
     },
     "jest": {
         "preset": "jest-expo"
+    },
+    "devDependencies": {
+        "jest-expo": "~18.0.0",
+        "npm": "4.6.1",
+        "react-devtools": "^2.4.0",
+        "react-native-scripts": "0.0.40",
+        "react-test-renderer": "16.0.0-alpha.12"
     },
     "dependencies": {
         "axios": "^0.16.2",
