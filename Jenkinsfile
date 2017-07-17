@@ -1,18 +1,15 @@
 #!/usr/bin/env groovy
 pipeline {
     agent any
-    tools {
-        nodejs 'node_V6.11.0'
-    }
     stages {
-        stage('Resolve dependencies.') {
+        stage('Build docker') {
             steps {
-                sh 'yarn install'
+                sh 'scripts/ci/build_docker.sh'
             }
         }
         stage('Run unit test.') {
             steps {
-                sh 'yarn test'
+                sh 'scripts/ci/test.sh'
             }
         }
     }
