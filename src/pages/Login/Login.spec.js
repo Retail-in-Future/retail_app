@@ -16,7 +16,18 @@ describe('Login component', () => {
     expect(component.find(Button)).toHaveLength(1)
   })
 
-  it('should password field being rendered as secure to protect password input', () => {
-    expect(component.find(TextInput).last().prop('secureTextEntry')).toBe(true)
+  it('should username field not being auto-capitalized and has a placeholder text', () => {
+    const usernameInput = component.find(TextInput).first()
+
+    expect(usernameInput.prop('autoCapitalize')).toBe('none')
+    expect(usernameInput.prop('placeholder')).toBe('Username')
+  })
+
+  it('should password field be secure input, not auto-capitalized and have a placeholder text', () => {
+    const passwordField = component.find(TextInput).last()
+
+    expect(passwordField.prop('secureTextEntry')).toBe(true)
+    expect(passwordField.prop('autoCapitalize')).toBe('none')
+    expect(passwordField.prop('placeholder')).toBe('Password')
   })
 })
