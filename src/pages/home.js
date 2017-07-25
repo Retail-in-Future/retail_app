@@ -38,6 +38,7 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <Header title="登录" />
+
         <TextInput style={{ width: 200, height: 44, padding: 8 }}
           value={this.state.username}
           onChangeText={this.onUsernameChanged}
