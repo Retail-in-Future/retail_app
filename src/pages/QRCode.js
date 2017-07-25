@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 
 import { Card, Text, Button } from 'react-native-elements';
 
-import Header from '../components/commonHeader';
+import Header from '../components/Header';
 
 export default class QRCode extends Component {
     handleRefresh = () => {
