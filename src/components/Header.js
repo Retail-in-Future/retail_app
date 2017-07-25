@@ -1,13 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { StyleSheet } from 'react-native'
 import { Header } from 'react-native-elements'
-
-// TODO: [Linesh][7/25/17] add eslint
-export default ({ title = 'I am not the title' }) => (
-  <Header outerContainerStyles={styles.headerOuter}
-          centerComponent={{ text: title }}
-  />
-)
 
 const styles = StyleSheet.create({
   headerOuter: {
@@ -15,3 +9,17 @@ const styles = StyleSheet.create({
     position: 'relative'
   }
 })
+
+// TODO: [Linesh][7/25/17] add eslint
+const CommonHeader = ({ title = 'I am not the title' }) => (
+  <Header outerContainerStyles={styles.headerOuter}
+    centerComponent={{ text: title }}
+  />
+)
+
+CommonHeader.propTypes = {
+  title: PropTypes.string
+}
+
+export default CommonHeader
+
