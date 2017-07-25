@@ -12,11 +12,11 @@ describe('Login component', () => {
   })
 
   it('should render username and password field and a login button', () => {
-    const inputs = component.find(TextInput)
-
-    expect(inputs).toHaveLength(2)
-    expect(inputs.last().prop('secureTextEntry')).toBe(true)
-
+    expect(component.find(TextInput)).toHaveLength(2)
     expect(component.find(Button)).toHaveLength(1)
+  })
+
+  it('should password field being rendered as secure to protect password input', () => {
+    expect(component.find(TextInput).last().prop('secureTextEntry')).toBe(true)
   })
 })
