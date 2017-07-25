@@ -5,9 +5,13 @@ import { Button } from 'react-native-elements'
 import Login from './Login'
 
 describe('Login component', () => {
-  it('should render username and password field and a login button', () => {
-    const component = shallow(<Login />)
+  let component
 
+  beforeEach(() => {
+    component = shallow(<Login />)
+  })
+
+  it('should render username and password field and a login button', () => {
     const inputs = component.find(TextInput)
 
     expect(inputs).toHaveLength(2)
