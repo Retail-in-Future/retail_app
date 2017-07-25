@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
   }
 })
 
-// TODO: [Linesh][7/25/17] add eslint
 const CommonHeader = ({ title = 'I am not the title' }) => (
   <Header outerContainerStyles={styles.headerOuter}
     centerComponent={{ text: title }}
