@@ -1,20 +1,16 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { StyleSheet, View } from 'react-native'
 
-import TabBar from './src/components/tabBar';
-
-export default class App extends Component {
-    render() {
-        return (
-            <View style={styles.container}>
-                <TabBar />
-            </View>
-        );
-    }
-}
+import TabBar from './src/components/tabBar'
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    }
-});
+  container: {
+    flex: 1
+  }
+})
+
+export default () => (
+  <View style={styles.container}>
+    <TabBar />
+  </View>
+)
