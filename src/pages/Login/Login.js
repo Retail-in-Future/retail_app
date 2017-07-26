@@ -1,18 +1,24 @@
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react'
-import { TextInput, View } from 'react-native'
+import { StyleSheet, TextInput, View } from 'react-native'
 import { Button } from 'react-native-elements'
 
-const inputFieldsStyle = {
-  width: 200,
-  height: 44,
-  borderBottomWidth: 1,
-  borderBottomColor: 'blue'
-}
-
-const componentStyle = {
-  padding: 20
-}
+const styles = StyleSheet.create({
+  loginComponent: {
+    padding: 20
+  },
+  inputWrapper: {
+    borderBottomWidth: 1,
+    borderBottomColor: 'indianred'
+  },
+  inputFields: {
+    width: 200,
+    height: 44
+  },
+  loginButtonText: {
+    textAlign: 'center'
+  }
+})
 
 class Login extends Component {
   constructor() {
@@ -39,25 +45,29 @@ class Login extends Component {
 
   render() {
     return (
-      <View style={componentStyle}>
-        <TextInput value={this.state.username}
-          style={inputFieldsStyle}
-          placeholder="Username"
-          placeholderTextColor="gray"
-          autoCapitalize="none"
-          autoFocus
-          onChangeText={this.onUsernameChanged}
-        />
-        <TextInput value={this.state.password}
-          style={inputFieldsStyle}
-          placeholder="Password"
-          placeholderTextColor="gray"
-          autoCapitalize="none"
-          secureTextEntry
-          onChangeText={this.onPasswordChanged}
-        />
+      <View style={styles.loginComponent}>
+        <View style={styles.inputWrapper}>
+          <TextInput value={this.state.username}
+            style={styles.inputFields}
+            placeholder="Username"
+            placeholderTextColor="gray"
+            autoCapitalize="none"
+            autoFocus
+            onChangeText={this.onUsernameChanged}
+          />
+        </View>
+        <View style={styles.inputWrapper}>
+          <TextInput value={this.state.password}
+            style={styles.inputFields}
+            placeholder="Password"
+            placeholderTextColor="gray"
+            autoCapitalize="none"
+            secureTextEntry
+            onChangeText={this.onPasswordChanged}
+          />
+        </View>
         <Button title="Login"
-          textStyle={{ textAlign: 'center' }}
+          textStyle={styles.loginButtonText}
           onPress={this.onLogin}
         />
       </View>
