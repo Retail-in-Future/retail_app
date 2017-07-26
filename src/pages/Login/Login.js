@@ -6,9 +6,12 @@ import { Button } from 'react-native-elements'
 const inputFieldsStyle = {
   width: 200,
   height: 44,
-  padding: 8,
   borderBottomWidth: 1,
-  borderBottomColor: 'gray'
+  borderBottomColor: 'blue'
+}
+
+const componentStyle = {
+  padding: 20
 }
 
 class Login extends Component {
@@ -36,7 +39,7 @@ class Login extends Component {
 
   render() {
     return (
-      <View>
+      <View style={componentStyle}>
         <TextInput value={this.state.username}
           style={inputFieldsStyle}
           placeholder="Username"
