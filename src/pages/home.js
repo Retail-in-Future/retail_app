@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 
 export default () => (
   <View style={styles.container}>
-    <Header title="登录" />
+    <Header title="登录 feature 仍在开发中" />
 
     <Login />
   </View>
