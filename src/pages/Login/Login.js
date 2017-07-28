@@ -4,6 +4,7 @@ import { StyleSheet, TextInput, View } from 'react-native'
 import { Button } from 'react-native-elements'
 
 import axios from 'axios'
+import _ from 'lodash'
 
 const styles = StyleSheet.create({
   loginComponent: {
@@ -27,7 +28,8 @@ class Login extends Component {
     super()
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      token: ''
     }
 
     this.onUsernameChanged = this.onUsernameChanged.bind(this)
@@ -48,9 +50,16 @@ class Login extends Component {
 
     axios.post('127.0.0.1:10001/login', {
       username, password
-    }).then((data) => {
-      console.log(data)
+    }).then((response) => {
+      console.log(response)
+      this.setState({
+        token: response.data // assume response.data is the token
+      })
     })
+  }
+
+  isLoggedIn() {
+    return !_.isEmpty(this.state.token)
   }
 
   render() {
@@ -85,4 +94,13 @@ class Login extends Component {
   }
 }
 
+// class LoginRequired extends Component {
+//   render() {
+//     return (
+//      <div />
+//     )
+//   }
+// }
+
 export default Login
+// export class LoginRequired
