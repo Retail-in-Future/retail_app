@@ -48,9 +48,9 @@ class Login extends Component {
 
     axios.post('127.0.0.1:10001/login', {
       username, password
-    }).then(
-
-    )
+    }).then((data) => {
+      console.log(data)
+    })
   }
 
   render() {
