@@ -2,7 +2,7 @@ import React from 'react'
 import { View, StyleSheet, Text } from 'react-native'
 
 import Header from '../components/Header'
-import { LoginRequired } from './Login/Login'
+import LoginRequired from './Login/LoginRequired'
 
 const styles = StyleSheet.create({
   container: {
