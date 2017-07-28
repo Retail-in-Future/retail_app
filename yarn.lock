@@ -5519,6 +5519,10 @@ q@^1.1.2:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.0.tgz#dd01bac9d06d30e6f219aecb8253ee9ebdc308f1"
 
+qr.js@0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/qr.js/-/qr.js-0.0.0.tgz#cace86386f59a0db8050fa90d9b6b0e88a1e364f"
+
 qrcode-terminal@^0.11.0:
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/qrcode-terminal/-/qrcode-terminal-0.11.0.tgz#ffc6c28a2fc0bfb47052b47e23f4f446a5fbdb9e"
@@ -5642,6 +5646,12 @@ react-native-elements@^0.13.0:
 "react-native-maps@https://github.com/expo/react-native-maps/archive/v0.15.2.tar.gz":
   version "0.15.2"
   resolved "https://github.com/expo/react-native-maps/archive/v0.15.2.tar.gz#e6a022511fbb53d0db5029dc0b159dd194a3763f"
+
+react-native-qrcode@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/react-native-qrcode/-/react-native-qrcode-0.2.3.tgz#cce06c5a8509c1f55a18d79053ace6fa0cedb376"
+  dependencies:
+    qr.js "0.0.0"
 
 react-native-safe-module@^1.1.0:
   version "1.2.0"

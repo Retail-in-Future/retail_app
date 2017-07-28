@@ -55,6 +55,7 @@ export default class TabBar extends Component {
 
   render() {
     const { selectedName } = this.state
+
     return (
       <View style={styles.container}>
         <LoginRequired>

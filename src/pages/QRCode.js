@@ -1,8 +1,11 @@
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
-
 import { Card, Text, Button } from 'react-native-elements'
+
+import QrCode from 'react-native-qrcode'
+
+import axios from 'axios'
 
 import Header from '../components/Header'
 
@@ -29,19 +32,40 @@ const styles = StyleSheet.create({
   }
 })
 
-const qrcode = require('../assets/images/pengchuan.png')
-
 export default class QRCode extends Component {
-  handleRefresh() {}
+
+  constructor() {
+    super()
+    this.state = {
+      qrcode: ''
+    }
+  }
+
+  componentDidMount() {
+    if (!global.username) return
+
+    this.handleRefresh()
+  }
+
+  handleRefresh() {
+    const username = global.username
+    axios.post('http://54.255.220.116:5000/token', { uid: username })
+      .then((response) => {
+        this.setState({
+          qrcode: `${username}$${response.data.token}`
+        })
+      })
+  }
 
   render() {
     return (
       <View style={styles.container}>
         <Header title="扫码" />
         <View style={styles.body}>
-          <Card imageStyle={styles.imageStyle}
-            image={qrcode}
-          >
+          <Card>
+            <QrCode value={this.state.qrcode}
+              size={200}
+            />
             <Text style={styles.textStyle}>
                             请将手机屏幕对准扫描器
             </Text>

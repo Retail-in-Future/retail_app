@@ -41,6 +41,7 @@ export default class Login extends Component {
 
   onUsernameChanged(username) {
     this.setState({ username })
+    global.username = username
   }
 
   onPasswordChanged(password) {
