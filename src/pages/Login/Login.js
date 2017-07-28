@@ -4,7 +4,8 @@ import PropTypes from 'prop-types'
 import { StyleSheet, TextInput, View } from 'react-native'
 import { Button } from 'react-native-elements'
 
-// import axios from 'axios'
+import qs from 'querystring'
+import axios from 'axios'
 import _ from 'lodash'
 
 const styles = StyleSheet.create({
@@ -29,13 +30,11 @@ export class Login extends Component {
     super()
     this.state = {
       username: '',
-      password: '',
-      token: ''
+      password: ''
     }
 
     this.onUsernameChanged = this.onUsernameChanged.bind(this)
     this.onPasswordChanged = this.onPasswordChanged.bind(this)
-    this.onLogin = this.onLogin.bind(this)
   }
 
   onUsernameChanged(username) {
@@ -44,23 +43,6 @@ export class Login extends Component {
 
   onPasswordChanged(password) {
     this.setState({ password })
-  }
-
-  onLogin() {
-    // const { username, password } = this.state
-
-    // axios.post('127.0.0.1:10001/login', {
-    //   username, password
-    // }).then((response) => {
-    //   console.log(response)
-    //   this.setState({
-    //     token: response.data // assume response.data is the token
-    //   })
-    // })
-  }
-
-  isLoggedIn() {
-    return !_.isEmpty(this.state.token)
   }
 
   render() {
@@ -88,18 +70,50 @@ export class Login extends Component {
         </View>
         <Button title="Login"
           textStyle={styles.loginButtonText}
-          onPress={this.onLogin}
+          onPress={() => this.props.onLogin(this.state.username, this.state.password)}
         />
       </View>
     )
   }
 }
 
-export const LoginRequired = ({ children }) => (
-  <View>
-    { children }
-  </View>
-)
+Login.propTypes = {
+  onLogin: PropTypes.func
+}
+
+export class LoginRequired extends Component {
+  constructor() {
+    super()
+    this.state = {
+      token: ''
+    }
+
+    this.onLogin = this.onLogin.bind(this)
+  }
+
+  onLogin(username, password) {
+    axios.post('http://54.255.182.198:9000/auth/realms/master/protocol/openid-connect/token', qs.stringify({
+      username,
+      password,
+      grant_type: 'password',
+      client_id: 'retail'
+    })).then((response) => {
+      this.setState({
+        token: response.data.access_token
+      })
+    }).catch(() => {})
+  }
+
+  isLoggedIn() {
+    return !_.isEmpty(this.state.token)
+  }
+
+  render() {
+    return (
+      this.isLoggedIn() ? this.props.children : <Login onLogin={this.onLogin} />
+    )
+  }
+}
 
 LoginRequired.propTypes = {
   children: PropTypes.node
