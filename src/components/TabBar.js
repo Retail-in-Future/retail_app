@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Tabs, Tab, Icon } from 'react-native-elements'
 
-import Home from '../pages/Home'
 import QRCode from '../pages/QRCode'
 import OrderList from '../pages/orderList'
 import LoginRequired from '../pages/Login/LoginRequired'
@@ -44,7 +43,7 @@ export default class TabBar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedName: 'home'
+      selectedName: 'input'
     }
   }
 
