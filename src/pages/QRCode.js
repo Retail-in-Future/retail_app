@@ -48,7 +48,10 @@ export default class QRCode extends Component {
   }
 
   handleQRCodeRefresh() {
+    // TODO: [Linesh][7/28/17] introduce redux to handle state management
     const username = global.username
+    // TODO: [Linesh][7/28/17] separate side-effect actions to redux/saga
+    // TODO: [Linesh][7/28/17] develop a general axios middleware
     axios.post('http://54.255.220.116:5000/token', { uid: username })
       .then((response) => {
         this.setState({
