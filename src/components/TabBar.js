@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Tabs, Tab, Icon } from 'react-native-elements'
 
-import Home from '../pages/home'
+import Home from '../pages/Home'
 import QRCode from '../pages/QRCode'
 import OrderList from '../pages/orderList'
 
