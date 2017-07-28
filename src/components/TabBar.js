@@ -5,6 +5,7 @@ import { Tabs, Tab, Icon } from 'react-native-elements'
 import Home from '../pages/Home'
 import QRCode from '../pages/QRCode'
 import OrderList from '../pages/orderList'
+import LoginRequired from '../pages/Login/LoginRequired'
 
 const styles = StyleSheet.create({
   container: {
@@ -57,48 +58,51 @@ export default class TabBar extends Component {
     const { selectedName } = this.state
     return (
       <View style={styles.container}>
-        <Tabs>
-          <Tab title="首页"
-            titleStyle={styles.tabTitle}
-            selected={selectedName === 'home'}
-            onPress={this.handlePressCreator('home')}
-            selectedTitleStyle={styles.tabTitleSelected}
-            renderIcon={iconCreator({ name: 'home', isSelected: false })}
-            renderSelectedIcon={iconCreator({ name: 'home', isSelected: true })}
-          >
-            <Home />
-          </Tab>
-          <Tab title="扫码进入"
-            titleStyle={styles.tabTitle}
-            selected={selectedName === 'input'}
-            onPress={this.handlePressCreator('input')}
-            selectedTitleStyle={styles.tabTitleSelected}
-            renderIcon={iconCreator({ name: 'input', isSelected: false })}
-            renderSelectedIcon={iconCreator({ name: 'input', isSelected: true })}
-          >
-            <QRCode action="input" />
-          </Tab>
-          <Tab title="购买记录"
-            titleStyle={styles.tabTitle}
-            selected={selectedName === 'list'}
-            onPress={this.handlePressCreator('list')}
-            selectedTitleStyle={styles.tabTitleSelected}
-            renderIcon={iconCreator({ name: 'list', isSelected: false })}
-            renderSelectedIcon={iconCreator({ name: 'list', isSelected: true })}
-          >
-            <OrderList />
-          </Tab>
-          <Tab title="扫码支付"
-            titleStyle={styles.tabTitle}
-            selected={selectedName === 'payment'}
-            onPress={this.handlePressCreator('payment')}
-            selectedTitleStyle={styles.tabTitleSelected}
-            renderIcon={iconCreator({ name: 'payment', isSelected: false })}
-            renderSelectedIcon={iconCreator({ name: 'payment', isSelected: true })}
-          >
-            <QRCode action="payment" />
-          </Tab>
-        </Tabs>
+        <LoginRequired>
+          <Tabs>
+            <Tab title="首页"
+              titleStyle={styles.tabTitle}
+              selected={selectedName === 'home'}
+              onPress={this.handlePressCreator('home')}
+              selectedTitleStyle={styles.tabTitleSelected}
+              renderIcon={iconCreator({ name: 'home', isSelected: false })}
+              renderSelectedIcon={iconCreator({ name: 'home', isSelected: true })}
+            >
+              <Home />
+            </Tab>
+            <Tab title="扫码进入"
+              titleStyle={styles.tabTitle}
+              selected={selectedName === 'input'}
+              onPress={this.handlePressCreator('input')}
+              selectedTitleStyle={styles.tabTitleSelected}
+              renderIcon={iconCreator({ name: 'input', isSelected: false })}
+              renderSelectedIcon={iconCreator({ name: 'input', isSelected: true })}
+            >
+              <QRCode action="input" />
+            </Tab>
+            <Tab title="购买记录"
+              titleStyle={styles.tabTitle}
+              selected={selectedName === 'list'}
+              onPress={this.handlePressCreator('list')}
+              selectedTitleStyle={styles.tabTitleSelected}
+              renderIcon={iconCreator({ name: 'list', isSelected: false })}
+              renderSelectedIcon={iconCreator({ name: 'list', isSelected: true })}
+            >
+              <OrderList />
+            </Tab>
+            <Tab title="扫码支付"
+              titleStyle={styles.tabTitle}
+              selected={selectedName === 'payment'}
+              onPress={this.handlePressCreator('payment')}
+              selectedTitleStyle={styles.tabTitleSelected}
+              renderIcon={iconCreator({ name: 'payment', isSelected: false })}
+              renderSelectedIcon={iconCreator({ name: 'payment', isSelected: true })}
+            >
+              <QRCode action="payment" />
+            </Tab>
+          </Tabs>
+
+        </LoginRequired>
       </View>
     )
   }
