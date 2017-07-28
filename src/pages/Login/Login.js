@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { StyleSheet, TextInput, View } from 'react-native'
 import { Button } from 'react-native-elements'
 
+// TODO: [Linesh][7/28/17] a more uniform-ed styles
 const styles = StyleSheet.create({
   loginComponent: {
     padding: 20,
@@ -14,14 +15,15 @@ const styles = StyleSheet.create({
   },
   inputWrapper: {
     borderBottomWidth: 1,
-    borderBottomColor: 'indianred'
+    borderBottomColor: '#397af8'
   },
   inputFields: {
     width: 200,
     height: 44
   },
-  loginButtonText: {
-    textAlign: 'center'
+  loginButton: {
+    marginTop: 20,
+    width: 200
   }
 })
 
@@ -68,10 +70,13 @@ export default class Login extends Component {
             onChangeText={this.onPasswordChanged}
           />
         </View>
-        <Button title="Login"
-          textStyle={styles.loginButtonText}
-          onPress={() => this.props.onLogin(this.state.username, this.state.password)}
-        />
+        <View>
+          <Button title="Login"
+            buttonStyle={styles.loginButton}
+            backgroundColor="#397af8"
+            onPress={() => this.props.onLogin(this.state.username, this.state.password)}
+          />
+        </View>
       </View>
     )
   }
