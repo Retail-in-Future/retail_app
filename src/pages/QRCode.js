@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-  textStyle: {
+  text: {
     textAlign: 'center',
     marginTop: 20,
     marginBottom: 20
@@ -69,13 +69,14 @@ export default class QRCode extends Component {
       <View style={styles.container}>
         <Header title="扫码" />
         <View style={styles.body}>
-          <View>
-            <QrCode value={this.state.qrcode}
-              size={300}
-            />
-          </View>
-
-          <Text style={styles.textStyle}>请将手机屏幕对准扫描器</Text>
+          {
+            this.state.qrcode ?
+              <View>
+                <QrCode value={this.state.qrcode} size={300} />
+                <Text style={styles.text}>请将手机屏幕对准扫描器</Text>
+              </View>
+              : <Text style={styles.text}>二维码生成失败。请刷新重试……</Text>
+          }
 
           <Button icon={{ name: 'refresh' }}
             backgroundColor="#03A9F4"
