@@ -13,6 +13,6 @@ export default () => (
   <View style={styles.container}>
     <Header title="首页" />
 
-    <Text>Home Page</Text>
+    <Text>You have already logged in.</Text>
   </View>
 )
