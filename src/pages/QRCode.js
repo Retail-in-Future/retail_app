@@ -44,10 +44,10 @@ export default class QRCode extends Component {
   componentDidMount() {
     if (!global.username) return
 
-    this.handleRefresh()
+    this.handleQRCodeRefresh()
   }
 
-  handleRefresh() {
+  handleQRCodeRefresh() {
     const username = global.username
     axios.post('http://54.255.220.116:5000/token', { uid: username })
       .then((response) => {
@@ -71,7 +71,7 @@ export default class QRCode extends Component {
             </Text>
             <Button icon={{ name: 'refresh' }}
               backgroundColor="#03A9F4"
-              onPress={this.handleRefresh}
+              onPress={this.handleQRCodeRefresh}
               buttonStyle={styles.buttonStyle}
               title="刷新二维码"
             />
