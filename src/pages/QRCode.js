@@ -14,15 +14,15 @@ const styles = StyleSheet.create({
     flex: 1
   },
   body: {
-    flex: 1
-  },
-  imageStyle: {
-    width: '100%',
-    height: 280
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   textStyle: {
     textAlign: 'center',
-    marginBottom: 10
+    marginTop: 20,
+    marginBottom: 20
   },
   buttonStyle: {
     borderRadius: 0,
@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
 })
 
 export default class QRCode extends Component {
-
   constructor() {
     super()
     this.state = {
@@ -42,12 +41,12 @@ export default class QRCode extends Component {
   }
 
   componentDidMount() {
-    if (!global.username) return
-
     this.handleQRCodeRefresh()
   }
 
   handleQRCodeRefresh() {
+    if (!global.username) return
+
     // TODO: [Linesh][7/28/17] introduce redux to handle state management
     const username = global.username
     // TODO: [Linesh][7/28/17] separate side-effect actions to redux/saga
@@ -61,24 +60,27 @@ export default class QRCode extends Component {
   }
 
   render() {
+    console.log('-------- this.state.qrcode --------')
+    console.log(this.state.qrcode)
+
     return (
       <View style={styles.container}>
         <Header title="扫码" />
         <View style={styles.body}>
-          <Card>
+          <View>
             <QrCode value={this.state.qrcode}
-              size={200}
+              size={300}
             />
-            <Text style={styles.textStyle}>
-                            请将手机屏幕对准扫描器
-            </Text>
-            <Button icon={{ name: 'refresh' }}
-              backgroundColor="#03A9F4"
-              onPress={this.handleQRCodeRefresh}
-              buttonStyle={styles.buttonStyle}
-              title="刷新二维码"
-            />
-          </Card>
+          </View>
+
+          <Text style={styles.textStyle}>请将手机屏幕对准扫描器</Text>
+
+          <Button icon={{ name: 'refresh' }}
+            backgroundColor="#03A9F4"
+            onPress={this.handleQRCodeRefresh}
+            buttonStyle={styles.buttonStyle}
+            title="刷新二维码"
+          />
         </View>
       </View>
     )
