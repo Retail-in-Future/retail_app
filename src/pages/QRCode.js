@@ -38,6 +38,8 @@ export default class QRCode extends Component {
     this.state = {
       qrcode: ''
     }
+
+    this.handleQRCodeRefresh = this.handleQRCodeRefresh.bind(this)
   }
 
   componentDidMount() {
@@ -45,12 +47,12 @@ export default class QRCode extends Component {
   }
 
   handleQRCodeRefresh() {
-    if (!global.username) return
-
     // TODO: [Linesh][7/28/17] introduce redux to handle state management
-    const username = global.username
     // TODO: [Linesh][7/28/17] separate side-effect actions to redux/saga
     // TODO: [Linesh][7/28/17] develop a general axios middleware
+    if (!global.username) return
+
+    const username = global.username
     axios.post('http://54.255.220.116:5000/token', { uid: username })
       .then((response) => {
         this.setState({
@@ -60,8 +62,7 @@ export default class QRCode extends Component {
   }
 
   render() {
-    console.log('-------- this.state.qrcode --------')
-    console.log(this.state.qrcode)
+    console.log(`QRCode: ${this.state.qrcode}`)
 
     return (
       <View style={styles.container}>
