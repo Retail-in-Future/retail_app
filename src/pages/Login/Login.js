@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import { StyleSheet, TextInput, View } from 'react-native'
 import { Button } from 'react-native-elements'
 
+import axios from 'axios'
+
 const styles = StyleSheet.create({
   loginComponent: {
     padding: 20
@@ -41,7 +43,15 @@ class Login extends Component {
     this.setState({ password })
   }
 
-  onLogin() {}
+  onLogin() {
+    const { username, password } = this.state
+
+    axios.post('127.0.0.1:10001/login', {
+      username, password
+    }).then(
+
+    )
+  }
 
   render() {
     return (
