@@ -60,16 +60,6 @@ export default class TabBar extends Component {
       <View style={styles.container}>
         <LoginRequired>
           <Tabs>
-            <Tab title="首页"
-              titleStyle={styles.tabTitle}
-              selected={selectedName === 'home'}
-              onPress={this.handlePressCreator('home')}
-              selectedTitleStyle={styles.tabTitleSelected}
-              renderIcon={iconCreator({ name: 'home', isSelected: false })}
-              renderSelectedIcon={iconCreator({ name: 'home', isSelected: true })}
-            >
-              <Home />
-            </Tab>
             <Tab title="扫码进入"
               titleStyle={styles.tabTitle}
               selected={selectedName === 'input'}
