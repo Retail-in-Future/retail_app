@@ -18,12 +18,12 @@ const styles = StyleSheet.create({
     borderBottomColor: '#397af8'
   },
   inputFields: {
-    width: 200,
+    width: 300,
     height: 44
   },
   loginButton: {
-    marginTop: 20,
-    width: 200
+    marginTop: 40,
+    width: 300
   },
   errorMessage: {
     fontSize: 11,
