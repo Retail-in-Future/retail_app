@@ -6,7 +6,11 @@ import { Button } from 'react-native-elements'
 
 const styles = StyleSheet.create({
   loginComponent: {
-    padding: 20
+    padding: 20,
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   inputWrapper: {
     borderBottomWidth: 1,
