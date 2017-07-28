@@ -1,9 +1,10 @@
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { StyleSheet, TextInput, View } from 'react-native'
 import { Button } from 'react-native-elements'
 
-import axios from 'axios'
+// import axios from 'axios'
 import _ from 'lodash'
 
 const styles = StyleSheet.create({
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
   }
 })
 
-class Login extends Component {
+export class Login extends Component {
   constructor() {
     super()
     this.state = {
@@ -46,16 +47,16 @@ class Login extends Component {
   }
 
   onLogin() {
-    const { username, password } = this.state
+    // const { username, password } = this.state
 
-    axios.post('127.0.0.1:10001/login', {
-      username, password
-    }).then((response) => {
-      console.log(response)
-      this.setState({
-        token: response.data // assume response.data is the token
-      })
-    })
+    // axios.post('127.0.0.1:10001/login', {
+    //   username, password
+    // }).then((response) => {
+    //   console.log(response)
+    //   this.setState({
+    //     token: response.data // assume response.data is the token
+    //   })
+    // })
   }
 
   isLoggedIn() {
@@ -94,13 +95,12 @@ class Login extends Component {
   }
 }
 
-// class LoginRequired extends Component {
-//   render() {
-//     return (
-//      <div />
-//     )
-//   }
-// }
+export const LoginRequired = ({ children }) => (
+  <View>
+    { children }
+  </View>
+)
 
-export default Login
-// export class LoginRequired
+LoginRequired.propTypes = {
+  children: PropTypes.node
+}
