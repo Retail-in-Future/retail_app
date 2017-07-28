@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { TextInput } from 'react-native'
 import { Button } from 'react-native-elements'
-import { Login } from './Login'
+import Login from './Login'
 
 describe('Login component', () => {
   let component
