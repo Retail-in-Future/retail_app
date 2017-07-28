@@ -1,7 +1,7 @@
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { Card, Text, Button } from 'react-native-elements'
+import { Text, Button } from 'react-native-elements'
 
 import QrCode from 'react-native-qrcode'
 
