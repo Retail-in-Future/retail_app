@@ -59,6 +59,7 @@ export default class QRCode extends Component {
           qrcode: `${username}$${response.data.token}`
         })
       })
+      .catch(() => {})
   }
 
   render() {
