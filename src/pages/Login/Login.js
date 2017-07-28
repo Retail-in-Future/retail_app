@@ -1,7 +1,7 @@
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet, TextInput, View } from 'react-native'
+import { StyleSheet, Text, TextInput, View } from 'react-native'
 import { Button } from 'react-native-elements'
 
 // TODO: [Linesh][7/28/17] a more uniform-ed styles
@@ -24,6 +24,11 @@ const styles = StyleSheet.create({
   loginButton: {
     marginTop: 20,
     width: 200
+  },
+  errorMessage: {
+    fontSize: 11,
+    color: 'indianred',
+    marginTop: 20
   }
 })
 
@@ -49,6 +54,8 @@ export default class Login extends Component {
   }
 
   render() {
+    const { errorMessage } = this.props
+
     return (
       <View style={styles.loginComponent}>
         <View style={styles.inputWrapper}>
@@ -71,6 +78,9 @@ export default class Login extends Component {
             onChangeText={this.onPasswordChanged}
           />
         </View>
+
+        { errorMessage ? <Text style={styles.errorMessage}>{ errorMessage }</Text> : null }
+
         <View>
           <Button title="Login"
             buttonStyle={styles.loginButton}
@@ -84,5 +94,6 @@ export default class Login extends Component {
 }
 
 Login.propTypes = {
-  onLogin: PropTypes.func
+  onLogin: PropTypes.func,
+  errorMessage: PropTypes.string
 }

@@ -11,7 +11,8 @@ export default class LoginRequired extends Component {
   constructor() {
     super()
     this.state = {
-      token: ''
+      token: '',
+      errorMessage: ''
     }
 
     this.onLogin = this.onLogin.bind(this)
@@ -25,9 +26,14 @@ export default class LoginRequired extends Component {
       client_id: 'retail'
     })).then((response) => {
       this.setState({
-        token: response.data.access_token
+        token: response.data.access_token,
+        errorMessage: ''
       })
-    }).catch(() => {})
+    }).catch(() => {
+      this.setState({
+        errorMessage: 'Incorrect username/password combination. Please try again.'
+      })
+    })
   }
 
   isLoggedIn() {
@@ -36,7 +42,8 @@ export default class LoginRequired extends Component {
 
   render() {
     return (
-      this.isLoggedIn() ? this.props.children : <Login onLogin={this.onLogin} />
+      this.isLoggedIn() ? this.props.children
+        : <Login onLogin={this.onLogin} errorMessage={this.state.errorMessage} />
     )
   }
 }
