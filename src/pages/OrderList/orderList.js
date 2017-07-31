@@ -1,15 +1,9 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View } from 'react-native'
 
 import { Header } from 'react-native-elements'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  headerOuter: {},
-  headerInner: {}
-})
+import styles from './styles'
 
 export default () => (
   <View style={styles.container}>

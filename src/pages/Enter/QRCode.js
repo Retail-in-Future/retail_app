@@ -1,36 +1,14 @@
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { View } from 'react-native'
 import { Text, Button } from 'react-native-elements'
 
 import QrCode from 'react-native-qrcode'
 
 import axios from 'axios'
 
-import Header from '../components/Header'
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  body: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  text: {
-    textAlign: 'center',
-    marginTop: 20,
-    marginBottom: 20
-  },
-  buttonStyle: {
-    borderRadius: 0,
-    marginLeft: 0,
-    marginRight: 0,
-    marginBottom: 0
-  }
-})
+import Header from '../../components/Header'
+import styles from './styles'
 
 export default class QRCode extends Component {
   constructor() {

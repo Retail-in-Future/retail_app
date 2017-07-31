@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Tabs, Tab, Icon } from 'react-native-elements'
 
-import QRCode from '../pages/QRCode'
-import OrderList from '../pages/orderList'
+import QRCode from '../pages/Enter/QRCode'
+import OrderList from '../pages/OrderList/orderList'
 import LoginRequired from '../pages/Login/LoginRequired'
 
 const styles = StyleSheet.create({

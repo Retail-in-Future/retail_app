@@ -42,7 +42,7 @@ export default class LoginRequired extends Component {
 
   render() {
     return (
-      this.isLoggedIn() ? this.props.children
+      !this.isLoggedIn() ? this.props.children
         : <Login onLogin={this.onLogin} errorMessage={this.state.errorMessage} />
     )
   }
