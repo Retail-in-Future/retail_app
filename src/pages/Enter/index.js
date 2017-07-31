@@ -44,7 +44,7 @@ export default class QRCode extends Component {
 
     return (
       <View style={styles.container}>
-        <Header title="扫码" />
+        <Header title="扫码进入" />
         <View style={styles.body}>
           {
             this.state.qrcode ?

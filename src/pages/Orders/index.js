@@ -9,7 +9,7 @@ export default () => (
   <View style={styles.container}>
     <Header outerContainerStyles={styles.headerOuter}
       innerContainerStyles={styles.headerInner}
-      centerComponent={{ text: '扫码' }}
+      centerComponent={{ text: '购买记录' }}
     />
   </View>
 )
