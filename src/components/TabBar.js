@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Tabs, Tab, Icon } from 'react-native-elements'
 
-import QRCode from '../pages/Enter/QRCode'
-import OrderList from '../pages/OrderList/OrderList'
+import Enter from '../pages/Enter'
+import OrderList from '../pages/Orders'
 import LoginRequired from '../pages/Login/LoginRequired'
 
 const styles = StyleSheet.create({
@@ -68,7 +68,7 @@ export default class TabBar extends Component {
               renderIcon={iconCreator({ name: 'input', isSelected: false })}
               renderSelectedIcon={iconCreator({ name: 'input', isSelected: true })}
             >
-              <QRCode action="input" />
+              <Enter action="input" />
             </Tab>
             <Tab title="购买记录"
               titleStyle={styles.tabTitle}
@@ -88,7 +88,7 @@ export default class TabBar extends Component {
               renderIcon={iconCreator({ name: 'payment', isSelected: false })}
               renderSelectedIcon={iconCreator({ name: 'payment', isSelected: true })}
             >
-              <QRCode action="payment" />
+              <Enter action="payment" />
             </Tab>
           </Tabs>
 
