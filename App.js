@@ -1,13 +1,9 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { View } from 'react-native'
 
 import TabBar from './src/components/TabBar'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-})
+import styles from './App.styles'
 
 export default () => (
   <View style={styles.container}>
