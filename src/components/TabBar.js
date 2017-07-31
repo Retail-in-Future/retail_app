@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native'
 import { Tabs, Tab, Icon } from 'react-native-elements'
 
 import QRCode from '../pages/Enter/QRCode'
-import OrderList from '../pages/OrderList/orderList'
+import OrderList from '../pages/OrderList/OrderList'
 import LoginRequired from '../pages/Login/LoginRequired'
 
 const styles = StyleSheet.create({
