@@ -46,8 +46,6 @@ class Enter extends Component {
 
   render() {
     console.log(`QRCode: ${this.state.qrcode}`)
-    console.log('-------- this.props.result --------')
-    console.log(this.props.result)
 
     return (
       <View style={styles.container}>
@@ -75,12 +73,11 @@ class Enter extends Component {
 }
 
 Enter.propTypes = {
-  result: PropTypes.object,
   tokenReceived: PropTypes.func
 }
 
 export default connect(
-  state => ({ result: state }),
+  () => ({}),
   dispatch => ({
     tokenReceived: token => dispatch(actions.tokenReceived(token))
   })

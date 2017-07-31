@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
