@@ -5,7 +5,7 @@ import axios from 'axios'
 import _ from 'lodash'
 import qs from 'querystring'
 
-import Login from './Login/Login'
+import { Login } from './Login/Login'
 
 export default class LoginRequired extends Component {
   constructor() {
