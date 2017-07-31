@@ -1,36 +1,10 @@
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet, Text, TextInput, View } from 'react-native'
+import { Text, TextInput, View } from 'react-native'
 import { Button } from 'react-native-elements'
 
-// TODO: [Linesh][7/28/17] a more uniform-ed styles
-const styles = StyleSheet.create({
-  loginComponent: {
-    padding: 20,
-    flex: 2,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  inputWrapper: {
-    borderBottomWidth: 1,
-    borderBottomColor: '#397af8'
-  },
-  inputFields: {
-    width: 300,
-    height: 44
-  },
-  loginButton: {
-    marginTop: 40,
-    width: 300
-  },
-  errorMessage: {
-    fontSize: 11,
-    color: 'indianred',
-    marginTop: 20
-  }
-})
+import styles from './Login.styles'
 
 export default class Login extends Component {
   constructor() {
