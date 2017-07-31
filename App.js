@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
-import TabBar from './src/components/TabBar'
+import TabBar from './src/components/TabBar/TabBar'
 
 const styles = StyleSheet.create({
   container: {

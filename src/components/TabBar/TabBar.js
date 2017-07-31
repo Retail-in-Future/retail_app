@@ -1,32 +1,12 @@
 import React, { Component } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { View } from 'react-native'
 import { Tabs, Tab, Icon } from 'react-native-elements'
 
-import Enter from '../pages/Enter'
-import OrderList from '../pages/Orders'
-import LoginRequired from '../pages/Login/LoginRequired'
+import Enter from '../../pages/Enter/index'
+import OrderList from '../../pages/Orders/index'
+import LoginRequired from '../../pages/Login/LoginRequired'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  iconStyle: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 12
-  },
-  tabTitle: {
-    fontSize: 10,
-    lineHeight: 14,
-    marginTop: 0,
-    marginBottom: 4,
-    color: '#778899',
-    fontWeight: '600'
-  },
-  tabTitleSelected: {
-    color: '#1EAAF1'
-  }
-})
+import styles from './styles'
 
 const iconCreator = ({ name, isSelected }) => () => {
   const color = isSelected ? '#1EAAF1' : '#778899'
