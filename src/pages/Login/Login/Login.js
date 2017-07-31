@@ -71,11 +71,15 @@ Login.propTypes = {
   errorMessage: PropTypes.string
 }
 
+const mapStateToProps = state => ({
+  username: state.login.username
+})
+
+const mapDispatchToProps = dispatch => ({
+  usernameUpdated: username => dispatch(actions.usernameUpdated(username))
+})
+
 export default connect(
-  state => ({
-    username: state.login.username
-  }),
-  dispatch => ({
-    usernameUpdated: username => dispatch(actions.usernameUpdated(username))
-  })
+  mapStateToProps,
+  mapDispatchToProps
 )(Login)
