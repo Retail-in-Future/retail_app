@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { Text } from 'react-native'
 
-import Login from './Login'
+import { Login } from './Login/Login'
 import LoginRequired from './LoginRequired'
 
 describe('Login component', () => {

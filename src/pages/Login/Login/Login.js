@@ -1,26 +1,23 @@
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+
 import { Text, TextInput, View } from 'react-native'
 import { Button } from 'react-native-elements'
 
+import * as actions from '../actions'
+
 import styles from './Login.styles'
 
-export default class Login extends Component {
+export class Login extends Component {
   constructor() {
     super()
     this.state = {
-      username: '',
       password: ''
     }
 
-    this.onUsernameChanged = this.onUsernameChanged.bind(this)
     this.onPasswordChanged = this.onPasswordChanged.bind(this)
-  }
-
-  onUsernameChanged(username) {
-    this.setState({ username })
-    global.username = username
   }
 
   onPasswordChanged(password) {
@@ -28,18 +25,18 @@ export default class Login extends Component {
   }
 
   render() {
-    const { errorMessage } = this.props
+    const { username, errorMessage, usernameUpdated, onLogin } = this.props
 
     return (
       <View style={styles.loginComponent}>
         <View style={styles.inputWrapper}>
-          <TextInput value={this.state.username}
+          <TextInput value={username}
             style={styles.inputFields}
             placeholder="Username"
             placeholderTextColor="gray"
             autoCapitalize="none"
             autoFocus
-            onChangeText={this.onUsernameChanged}
+            onChangeText={updatedUsername => usernameUpdated(updatedUsername)}
           />
         </View>
         <View style={styles.inputWrapper}>
@@ -59,7 +56,7 @@ export default class Login extends Component {
           <Button title="Login"
             buttonStyle={styles.loginButton}
             backgroundColor="#397af8"
-            onPress={() => this.props.onLogin(this.state.username, this.state.password)}
+            onPress={() => onLogin(username, this.state.password)}
           />
         </View>
       </View>
@@ -68,6 +65,17 @@ export default class Login extends Component {
 }
 
 Login.propTypes = {
+  username: PropTypes.string,
+  usernameUpdated: PropTypes.func,
   onLogin: PropTypes.func,
   errorMessage: PropTypes.string
 }
+
+export default connect(
+  state => ({
+    username: state.login.username
+  }),
+  dispatch => ({
+    usernameUpdated: username => dispatch(actions.usernameUpdated(username))
+  })
+)(Login)
