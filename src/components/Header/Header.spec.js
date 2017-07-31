@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { Header as ReactNativeHeader } from 'react-native-elements'
-import Header from './Header'
+import Header from '.'
 
 describe('Header component', () => {
   it('should render a Header component', () => {
