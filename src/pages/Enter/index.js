@@ -27,7 +27,6 @@ class Enter extends Component {
   }
 
   handleQRCodeRefresh() {
-    // TODO: [Linesh][7/28/17] introduce redux to handle state management
     // TODO: [Linesh][7/28/17] separate side-effect actions to redux/saga
     // TODO: [Linesh][7/28/17] develop a general axios middleware
     const { username } = this.props
