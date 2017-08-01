@@ -39,4 +39,8 @@ export const login = (username, password) => (dispatch) => {
       dispatch(clearErrorMessage())
       dispatch(receiveToken(response.data.access_token))
     })
+    .catch((error) => {
+      // TODO: [Linesh][8/1/17] handle 401 errors here
+      console.error(error)
+    })
 }
