@@ -9,10 +9,12 @@ const initState = {
 }
 
 const reducers = {
-  // TODO: [Linesh][8/1/17] seems there's still bugs between layered redux stores, figure out
-  [UPDATE_USERNAME]: (state, action) => ({ username: action.payload.username }),
-  [RECEIVE_TOKEN]: (state, action) => ({ token: action.payload.token }),
-  [UPDATE_ERROR_MESSAGE]: (state, action) => ({ errorMessage: action.payload.errorMessage })
+  [UPDATE_USERNAME]: (state, action) => ({ ...state, username: action.payload.username }),
+  [RECEIVE_TOKEN]: (state, action) => ({ ...state, token: action.payload.token }),
+  [UPDATE_ERROR_MESSAGE]: (state, action) => ({
+    ...state,
+    errorMessage: action.payload.errorMessage
+  })
 }
 
 export default handleActions(reducers, initState)
