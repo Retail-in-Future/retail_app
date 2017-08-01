@@ -40,7 +40,9 @@ export const login = (username, password) => (dispatch) => {
       dispatch(receiveToken(response.data.access_token))
     })
     .catch((error) => {
-      // TODO: [Linesh][8/1/17] handle 401 errors here
-      console.error(error)
+      const errorMessage = error.response && error.response.status === 401 ?
+        error.response.data.error_description : 'No response from authentication server. Maybe try again later.'
+
+      dispatch(updateErrorMessage(errorMessage))
     })
 }
