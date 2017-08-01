@@ -27,11 +27,11 @@ class Enter extends Component {
   }
 
   handleQRCodeRefresh() {
-    // TODO: [Linesh][7/28/17] separate side-effect actions to redux/saga
     // TODO: [Linesh][7/28/17] develop a general axios middleware
     const { username } = this.props
     if (!username) return
 
+    // TODO: [Linesh][8/1/17] moving this to redux also means qrcode has to be moved. Evaluate
     axios.post('http://54.255.220.116:5000/token', { uid: username })
       .then((response) => {
         this.setState({
