@@ -11,9 +11,7 @@ export const receiveQRCode = (username, token) => ({
 })
 
 export const generateQRCode = username => (dispatch) => {
-  return axios.post('http://54.255.220.116:5000/token', { uid: username })
-    .then((response) => {
-      dispatch(receiveQRCode(username, response.data.token))
-    })
+  return axios.post('http://10.207.11.201:5000/token', { uid: username })
+    .then(response => dispatch(receiveQRCode(username, response.data.token)))
     .catch(() => {})
 }
