@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
@@ -7,17 +8,13 @@ import { Text, Button } from 'react-native-elements'
 
 import QrCode from 'react-native-qrcode'
 
-import axios from 'axios'
-
 import Header from '../../components/Header'
 import styles from './styles'
+import * as actionCreators from './actions'
 
 class Enter extends Component {
   constructor() {
     super()
-    this.state = {
-      qrcode: ''
-    }
 
     this.handleQRCodeRefresh = this.handleQRCodeRefresh.bind(this)
   }
@@ -31,28 +28,21 @@ class Enter extends Component {
     const { username } = this.props
     if (!username) return
 
-    // TODO: [Linesh][8/1/17] moving this to redux also means qrcode has to be moved. Evaluate
-    // axios.post('http://54.255.220.116:5000/token', { uid: username })
-    //   .then((response) => {
-    //     this.setState({
-    //       qrcode: `${username}$${response.data.token}`
-    //     })
-    //   })
-    //   .catch(() => {})
+    this.props.generateQRCode(username)
   }
 
   render() {
     // TODO: [Linesh][8/1/17] this won't be necessary if qrcode is moved to redux
-    console.log(`QRCode: ${this.state.qrcode}`)
+    // console.log(`QRCode: ${this.state.qrcode}`)
 
     return (
       <View style={styles.container}>
         <Header title="扫码进入" />
         <View style={styles.body}>
           {
-            this.state.qrcode ?
+            this.props.qrcode ?
               <View>
-                <QrCode value={this.state.qrcode} size={300} />
+                <QrCode value={this.props.qrcode} size={300} />
                 <Text style={styles.text}>请将手机屏幕对准扫描器</Text>
               </View>
               : <Text style={styles.text}>二维码生成失败。请刷新重试……</Text>
@@ -71,11 +61,15 @@ class Enter extends Component {
 }
 
 Enter.propTypes = {
-  username: PropTypes.string
+  username: PropTypes.string,
+  qrcode: PropTypes.string,
+  generateQRCode: PropTypes.func
 }
 
 export default connect(
   state => ({
-    username: state.login.username
-  })
+    username: state.login.username,
+    qrcode: state.enter.qrcode
+  }),
+  dispatch => bindActionCreators(actionCreators, dispatch)
 )(Enter)

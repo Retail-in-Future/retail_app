@@ -6,7 +6,13 @@ const initState = {
 }
 
 const reducers = {
-  [RECEIVE_QRCODE]: (state, action) => ({ qrcode: action.payload.qrcode })
+  [RECEIVE_QRCODE]: (state, action) => {
+    const { username, token } = action.payload
+
+    return {
+      qrcode: `${username}$${token}`
+    }
+  }
 }
 
 export default handleActions(reducers, initState)

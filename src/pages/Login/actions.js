@@ -40,5 +40,4 @@ export const login = (username, password) => (dispatch) => {
       dispatch(clearErrorMessage())
       dispatch(receiveToken(response.data.access_token))
     })
-    .catch(() => dispatch(updateErrorMessage('Incorrect username/password combination. Please try again.')))
 }
