@@ -35,8 +35,7 @@ export const login = (username, password) => (dispatch) => {
     client_id: 'retail'
   })
 
-  dispatch(receiveToken('234234234234'))
-  return axios.post('http://54.255.182.198:9000/auth/realms/master/protocol/openid-connect/token', params)
+  return axios.post('http://10.207.11.201:9000/auth/realms/master/protocol/openid-connect/token', params)
     .then((response) => {
       dispatch(receiveToken(response.data.access_token))
       dispatch(clearErrorMessage())
