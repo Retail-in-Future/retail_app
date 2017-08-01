@@ -25,10 +25,10 @@ class Enter extends Component {
 
   handleQRCodeRefresh() {
     // TODO: [Linesh][7/28/17] develop a general axios middleware
-    const { username } = this.props
-    if (!username) return
+    // TODO: [Linesh][8/1/17] move this branch into generateQRCode action
+    if (!this.props.username) return
 
-    this.props.generateQRCode(username)
+    this.props.generateQRCode(this.props.username)
   }
 
   render() {
