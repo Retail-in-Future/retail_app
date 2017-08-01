@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View } from 'react-native'
 import { Tabs, Tab, Icon } from 'react-native-elements'
 
-import Enter from '../../pages/Enter'
+import { Enter } from '../../pages/Enter'
 import OrderList from '../../pages/Orders/index'
 import LoginRequired from '../../pages/Login/LoginRequired'
 

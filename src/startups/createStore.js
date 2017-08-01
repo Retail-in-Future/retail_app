@@ -5,13 +5,14 @@ import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
-import { login } from '../pages'
+import { login, enter } from '../pages'
 
 const loggerMiddleware = createLogger({ predicate: () => __DEV__ })
 
 export default () => {
   const rootReducer = combineReducers({
-    [login.NAME]: login.reducer
+    [login.NAME]: login.reducer,
+    [enter.NAME]: enter.reducer
   })
   const initState = {}
   const middlewares = composeWithDevTools(

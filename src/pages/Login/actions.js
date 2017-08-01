@@ -37,8 +37,8 @@ export const login = (username, password) => (dispatch) => {
 
   return axios.post('http://10.207.11.201:9000/auth/realms/master/protocol/openid-connect/token', params)
     .then((response) => {
-      dispatch(receiveToken(response.data.access_token))
       dispatch(clearErrorMessage())
+      dispatch(receiveToken(response.data.access_token))
     })
     .catch(() => dispatch(updateErrorMessage('Incorrect username/password combination. Please try again.')))
 }
