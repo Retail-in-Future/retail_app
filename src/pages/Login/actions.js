@@ -1,7 +1,7 @@
 import axios from 'axios'
 import qs from 'querystring'
 
-import { USERNAME_UPDATED, RECEIVE_TOKEN, UPDATE_ERROR_MESSAGE } from './constants'
+import { UPDATE_USERNAME, RECEIVE_TOKEN, UPDATE_ERROR_MESSAGE } from './constants'
 
 export const updateErrorMessage = errorMessage => ({
   type: UPDATE_ERROR_MESSAGE,
@@ -19,9 +19,8 @@ export const receiveToken = token => ({
   }
 })
 
-export const usernameUpdated = username => ({
-  // TODO: [Linesh][8/1/17] rename actions to verb-noun
-  type: USERNAME_UPDATED,
+export const updateUsername = username => ({
+  type: UPDATE_USERNAME,
   payload: {
     username
   }

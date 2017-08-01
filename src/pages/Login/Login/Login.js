@@ -25,7 +25,7 @@ export class Login extends Component {
   }
 
   render() {
-    const { username, errorMessage, usernameUpdated, onLogin } = this.props
+    const { username, errorMessage, updateUsername, onLogin } = this.props
 
     return (
       <View style={styles.loginComponent}>
@@ -36,7 +36,7 @@ export class Login extends Component {
             placeholderTextColor="gray"
             autoCapitalize="none"
             autoFocus
-            onChangeText={updatedUsername => usernameUpdated(updatedUsername)}
+            onChangeText={updatedUsername => updateUsername(updatedUsername)}
           />
         </View>
         <View style={styles.inputWrapper}>
@@ -66,7 +66,7 @@ export class Login extends Component {
 
 Login.propTypes = {
   username: PropTypes.string,
-  usernameUpdated: PropTypes.func,
+  updateUsername: PropTypes.func,
   onLogin: PropTypes.func,
   errorMessage: PropTypes.string
 }
@@ -76,7 +76,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  usernameUpdated: username => dispatch(actions.usernameUpdated(username))
+  updateUsername: username => dispatch(actions.updateUsername(username))
 })
 
 export default connect(
