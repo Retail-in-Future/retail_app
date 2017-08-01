@@ -32,9 +32,6 @@ class Enter extends Component {
   }
 
   render() {
-    // TODO: [Linesh][8/1/17] this won't be necessary if qrcode is moved to redux
-    // console.log(`QRCode: ${this.state.qrcode}`)
-
     return (
       <View style={styles.container}>
         <Header title="扫码进入" />
