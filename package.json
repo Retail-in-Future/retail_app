@@ -10,6 +10,7 @@
     "ios": "react-native-scripts ios",
     "lint": "eslint src --ext .js,.jsx",
     "test": "node node_modules/jest/bin/jest.js",
+    "debug": "open 'rndebugger://set-debugger-loc?host=localhost&port=19001'",
     "devtools": "react-devtools"
   },
   "jest": {
@@ -29,7 +30,8 @@
     "react-devtools": "^2.4.0",
     "react-dom": "16.0.0-alpha.12",
     "react-native-scripts": "0.0.40",
-    "react-test-renderer": "16.0.0-alpha.12"
+    "react-test-renderer": "16.0.0-alpha.12",
+    "redux-logger": "^3.0.6"
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -42,6 +44,7 @@
     "react-native-qrcode": "^0.2.3",
     "react-redux": "^5.0.5",
     "redux": "^3.7.2",
-    "redux-actions": "^2.2.1"
+    "redux-actions": "^2.2.1",
+    "redux-devtools-extension": "^2.13.2"
   }
 }
