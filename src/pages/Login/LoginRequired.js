@@ -1,54 +1,51 @@
 /* eslint-disable import/no-named-as-default */
 import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import axios from 'axios'
 import _ from 'lodash'
-import qs from 'querystring'
 
 import Login from './Login/Login'
+import * as actionCreators from './actions'
 
-export default class LoginRequired extends Component {
+class LoginRequired extends Component {
   constructor() {
     super()
-    this.state = {
-      token: '',
-      errorMessage: ''
-    }
 
     this.onLogin = this.onLogin.bind(this)
   }
 
   onLogin(username, password) {
-    axios.post('http://54.255.182.198:9000/auth/realms/master/protocol/openid-connect/token', qs.stringify({
-      username,
-      password,
-      grant_type: 'password',
-      client_id: 'retail'
-    })).then((response) => {
-      this.setState({
-        token: response.data.access_token,
-        errorMessage: ''
-      })
-    }).catch(() => {
-      this.setState({
-        errorMessage: 'Incorrect username/password combination. Please try again.'
-      })
-    })
+    this.props.login(username, password)
   }
 
   isLoggedIn() {
-    return !_.isEmpty(this.state.token)
+    return !_.isEmpty(this.props.token)
   }
 
   render() {
+    const { children, errorMessage } = this.props
+
     return (
-      this.isLoggedIn() ? this.props.children
-        : <Login onLogin={this.onLogin} errorMessage={this.state.errorMessage} />
+      this.isLoggedIn() ?
+        children :
+        <Login onLogin={this.onLogin} errorMessage={errorMessage} />
     )
   }
 }
 
 LoginRequired.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  token: PropTypes.string,
+  errorMessage: PropTypes.string,
+  login: PropTypes.func
 }
+
+export default connect(
+  state => ({
+    token: state.login.token,
+    errorMessage: state.login.errorMessage
+  }),
+  dispatch => bindActionCreators(actionCreators, dispatch)
+)(LoginRequired)
