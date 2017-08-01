@@ -1,15 +1,14 @@
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
 
 import { enter, login } from '../pages'
-
-const initState = {}
-// const middleWare =
 
 export default () => {
   const rootReducer = combineReducers({
     [enter.NAME]: enter.reducer,
     [login.NAME]: login.reducer
   })
+  const initState = {}
+  const middlewares = applyMiddleware()
 
-  return createStore(rootReducer, initState)
+  return createStore(rootReducer, initState, middlewares)
 }
