@@ -17,6 +17,7 @@
     "preset": "jest-expo"
   },
   "devDependencies": {
+    "axios-mock-adapter": "^1.9.0",
     "enzyme": "^2.9.1",
     "eslint": "^4.3.0",
     "eslint-config-airbnb": "^15.1.0",
@@ -31,7 +32,8 @@
     "react-dom": "16.0.0-alpha.12",
     "react-native-scripts": "0.0.40",
     "react-test-renderer": "16.0.0-alpha.12",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "sinon": "^2.4.1"
   },
   "dependencies": {
     "axios": "^0.16.2",
