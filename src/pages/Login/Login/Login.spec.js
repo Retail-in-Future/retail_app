@@ -37,5 +37,15 @@ describe('Login component', () => {
     expect(component.find(Button).prop('disabled')).toBe(true)
   })
 
+  it.skip('should disable login button when password is empty', () => {
+    component = shallow(<Login username="admin" />).setState({ password: '' })
 
+    expect(component.find(Button).prop('disabled')).toBe(true)
+  })
+
+  it.skip('should enable login button when both username and password have at least one character input', () => {
+    component = shallow(<Login username="admin" />).setState({ password: 'admin' })
+
+    expect(component.find(Button).prop('disabled')).toBe(false)
+  })
 })

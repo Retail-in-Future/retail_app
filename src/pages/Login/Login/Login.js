@@ -6,6 +6,8 @@ import { connect } from 'react-redux'
 import { Text, TextInput, View } from 'react-native'
 import { Button } from 'react-native-elements'
 
+import _ from 'lodash'
+
 import * as actions from '../actions'
 
 import styles from './Login.styles'
@@ -14,14 +16,18 @@ export class Login extends Component {
   constructor() {
     super()
     this.state = {
-      password: ''
+      password: '',
+      loginDisabled: true
     }
 
     this.onPasswordChanged = this.onPasswordChanged.bind(this)
   }
 
   onPasswordChanged(password) {
-    this.setState({ password })
+    this.setState({
+      password,
+      loginDisabled: _.isEmpty(this.props.username) || _.isEmpty(password)
+    })
   }
 
   render() {
@@ -54,7 +60,7 @@ export class Login extends Component {
 
         <View>
           <Button title="Login"
-            disabled
+            disabled={this.state.loginDisabled}
             buttonStyle={styles.loginButton}
             backgroundColor="#397af8"
             onPress={() => onLogin(username, this.state.password)}
