@@ -2,8 +2,6 @@ import { handleActions } from 'redux-actions'
 
 import { RECEIVE_TOKEN, UPDATE_ERROR_MESSAGE, UPDATE_USERNAME } from '../actions/actionTypes'
 
-const reducerPrefix = 'credentials'
-
 const initState = {
   username: '',
   token: '',
@@ -19,6 +17,8 @@ const reducers = {
     errorMessage: action.payload.errorMessage
   })
 }
+
+const reducerPrefix = 'credentials'
 
 export default {
   reducerPrefix,

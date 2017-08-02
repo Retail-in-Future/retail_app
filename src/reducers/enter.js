@@ -2,8 +2,6 @@ import { handleActions } from 'redux-actions'
 
 import { RECEIVE_QRCODE } from '../actions/actionTypes'
 
-const reducerPrefix = 'enter'
-
 const initState = {
   qrcode: ''
 }
@@ -17,6 +15,8 @@ const reducers = {
     }
   }
 }
+
+const reducerPrefix = 'enter'
 
 export default {
   reducerPrefix,
