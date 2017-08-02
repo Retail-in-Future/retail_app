@@ -42,7 +42,14 @@ export class Login extends Component {
             placeholderTextColor="gray"
             autoCapitalize="none"
             autoFocus
-            onChangeText={updatedUsername => updateUsername(updatedUsername)}
+            onChangeText={
+              (updatedUsername) => {
+                updateUsername(updatedUsername)
+                this.setState({
+                  loginDisabled: _.isEmpty(updatedUsername) || _.isEmpty(this.state.password)
+                })
+              }
+            }
           />
         </View>
         <View style={styles.inputWrapper}>
