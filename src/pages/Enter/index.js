@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
@@ -13,29 +12,21 @@ import styles from './styles'
 import * as actionCreators from '../../actions/enter'
 
 class Enter extends Component {
-  constructor() {
-    super()
-
-    this.handleQRCodeRefresh = this.handleQRCodeRefresh.bind(this)
-  }
-
   componentDidMount() {
-    this.handleQRCodeRefresh()
-  }
-
-  handleQRCodeRefresh() {
     this.props.generateQRCode(this.props.username)
   }
 
   render() {
+    const { qrcode, generateQRCode, username } = this.props
+
     return (
       <View style={styles.container}>
         <Header title="扫码进入" />
         <View style={styles.body}>
           {
-            this.props.qrcode ?
+            qrcode ?
               <View>
-                <QrCode value={this.props.qrcode} size={300} />
+                <QrCode value={qrcode} size={300} />
                 <Text style={styles.text}>请将手机屏幕对准扫描器</Text>
               </View>
               : <Text style={styles.text}>二维码生成失败。请刷新重试……</Text>
@@ -43,7 +34,7 @@ class Enter extends Component {
 
           <Button icon={{ name: 'refresh' }}
             backgroundColor="#03A9F4"
-            onPress={this.handleQRCodeRefresh}
+            onPress={() => generateQRCode(username)}
             buttonStyle={styles.buttonStyle}
             title="刷新二维码"
           />
@@ -64,5 +55,7 @@ export default connect(
     username: state.credentials.username,
     qrcode: state.enter.qrcode
   }),
-  dispatch => bindActionCreators(actionCreators, dispatch)
+  dispatch => ({
+    generateQRCode: username => dispatch(actionCreators.generateQRCode(username))
+  })
 )(Enter)
