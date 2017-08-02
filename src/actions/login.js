@@ -3,6 +3,13 @@ import qs from 'querystring'
 
 import { UPDATE_USERNAME, RECEIVE_TOKEN, UPDATE_ERROR_MESSAGE } from './actionTypes'
 
+export const updateUsername = username => ({
+  type: UPDATE_USERNAME,
+  payload: {
+    username
+  }
+})
+
 export const updateErrorMessage = errorMessage => ({
   type: UPDATE_ERROR_MESSAGE,
   payload: {
@@ -16,13 +23,6 @@ export const receiveToken = token => ({
   type: RECEIVE_TOKEN,
   payload: {
     token
-  }
-})
-
-export const updateUsername = username => ({
-  type: UPDATE_USERNAME,
-  payload: {
-    username
   }
 })
 
