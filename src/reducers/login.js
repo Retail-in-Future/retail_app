@@ -1,6 +1,8 @@
 import { handleActions } from 'redux-actions'
 
-import { RECEIVE_TOKEN, UPDATE_ERROR_MESSAGE, UPDATE_USERNAME } from './constants'
+import { RECEIVE_TOKEN, UPDATE_ERROR_MESSAGE, UPDATE_USERNAME } from '../actions/actionTypes'
+
+const reducerPrefix = 'credentials'
 
 const initState = {
   username: '',
@@ -18,4 +20,7 @@ const reducers = {
   })
 }
 
-export default handleActions(reducers, initState)
+export default {
+  reducerPrefix,
+  reducers: handleActions(reducers, initState)
+}

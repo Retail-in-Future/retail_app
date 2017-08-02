@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 
 import Login from './Login/Login'
-import { login } from './actions'
+import { login } from '../../actions/login'
 
 class LoginRequired extends Component {
   isLoggedIn() {
@@ -32,8 +32,8 @@ LoginRequired.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  token: state.login.token,
-  errorMessage: state.login.errorMessage
+  token: state.credentials.token,
+  errorMessage: state.credentials.errorMessage
 })
 
 const mapDispatchToProps = dispatch => ({

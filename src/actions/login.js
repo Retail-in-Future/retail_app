@@ -1,7 +1,7 @@
 import axios from 'axios'
 import qs from 'querystring'
 
-import { UPDATE_USERNAME, RECEIVE_TOKEN, UPDATE_ERROR_MESSAGE } from './constants'
+import { UPDATE_USERNAME, RECEIVE_TOKEN, UPDATE_ERROR_MESSAGE } from './actionTypes'
 
 export const updateErrorMessage = errorMessage => ({
   type: UPDATE_ERROR_MESSAGE,

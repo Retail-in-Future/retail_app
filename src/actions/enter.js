@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { RECEIVE_QRCODE } from './constants'
+import { RECEIVE_QRCODE } from '../actions/actionTypes'
 
 export const receiveQRCode = (username, token) => ({
   type: RECEIVE_QRCODE,

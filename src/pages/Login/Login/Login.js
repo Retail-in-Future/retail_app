@@ -8,7 +8,7 @@ import { Button } from 'react-native-elements'
 
 import _ from 'lodash'
 
-import * as actions from '../actions'
+import * as actions from '../../../actions/login'
 
 import styles from './Login.styles'
 
@@ -87,7 +87,7 @@ Login.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  username: state.login.username
+  username: state.credentials.username
 })
 
 const mapDispatchToProps = dispatch => ({
