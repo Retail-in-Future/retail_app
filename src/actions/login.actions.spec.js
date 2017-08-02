@@ -118,15 +118,11 @@ describe('Login action creators', () => {
       expect(dispatch).toHaveBeenCalledWith(expectedUpdateErrorMessageAction)
     })
 
-    beforeAll(() => {
+    beforeEach(() => {
       mock = new MockAdapter(axios)
     })
 
     afterEach(() => {
-      mock.reset()
-    })
-
-    afterAll(() => {
       mock.restore()
     })
   })

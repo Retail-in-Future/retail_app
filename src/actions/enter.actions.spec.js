@@ -1,4 +1,7 @@
-import { receiveQRCode } from './enter'
+import axios from 'axios'
+import MockAdapter from 'axios-mock-adapter'
+
+import { generateQRCode, receiveQRCode } from './enter'
 import { RECEIVE_QRCODE } from './actionTypes'
 
 describe('Enter action creators', () => {
@@ -16,5 +19,26 @@ describe('Enter action creators', () => {
     expect(result).toEqual(expected)
   })
 
+  describe('async action creators', () => {
+    let mock
+    const qrcodeServiceUrl = 'http://10.207.11.201:5000/token'
 
+    beforeEach(() => {
+      mock = new MockAdapter(axios)
+    })
+
+    afterEach(() => {
+      mock.restore()
+    })
+
+    it('should dispatch a RECEIVE_QRCODE action with username and token when qrcode service returns a valid token for user', async () => {
+      const username = 'admin'
+      const dispatch = jest.fn()
+      mock.onPost(qrcodeServiceUrl, { uid: 'admin' }).reply(200, { token: '@@init' })
+
+      await generateQRCode(username)(dispatch)
+
+      expect(dispatch).toHaveBeenCalledWith({ type: RECEIVE_QRCODE, payload: { username, token: '@@init' } })
+    })
+  })
 })
