@@ -4,6 +4,9 @@
 ## Package management
 node_modules/
 
+## Jest Coversage
+coverage
+
 ## IDE
 .idea
 
