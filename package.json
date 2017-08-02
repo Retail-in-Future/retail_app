@@ -35,7 +35,6 @@
     "react-dom": "16.0.0-alpha.12",
     "react-native-scripts": "0.0.40",
     "react-test-renderer": "16.0.0-alpha.12",
-    "redux-logger": "^3.0.6",
     "sinon": "^2.4.1"
   },
   "dependencies": {
