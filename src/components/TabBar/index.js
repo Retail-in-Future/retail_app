@@ -23,18 +23,16 @@ export default class TabBar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedName: 'input'
+      selectedTab: 'input'
     }
   }
 
-  handlePressCreator(selectedName) {
-    return () => {
-      this.setState({ selectedName })
-    }
+  changeSelectedTab(selectedTab) {
+    this.setState({ selectedTab })
   }
 
   render() {
-    const { selectedName } = this.state
+    const { selectedTab } = this.state
 
     return (
       <View style={styles.container}>
@@ -42,8 +40,8 @@ export default class TabBar extends Component {
           <Tabs>
             <Tab title="扫码进入"
               titleStyle={styles.tabTitle}
-              selected={selectedName === 'input'}
-              onPress={this.handlePressCreator('input')}
+              selected={selectedTab === 'input'}
+              onPress={() => this.changeSelectedTab('input')}
               selectedTitleStyle={styles.tabTitleSelected}
               renderIcon={iconCreator({ name: 'input', isSelected: false })}
               renderSelectedIcon={iconCreator({ name: 'input', isSelected: true })}
@@ -52,8 +50,8 @@ export default class TabBar extends Component {
             </Tab>
             <Tab title="购买记录"
               titleStyle={styles.tabTitle}
-              selected={selectedName === 'list'}
-              onPress={this.handlePressCreator('list')}
+              selected={selectedTab === 'list'}
+              onPress={() => this.changeSelectedTab('list')}
               selectedTitleStyle={styles.tabTitleSelected}
               renderIcon={iconCreator({ name: 'list', isSelected: false })}
               renderSelectedIcon={iconCreator({ name: 'list', isSelected: true })}
@@ -62,8 +60,8 @@ export default class TabBar extends Component {
             </Tab>
             <Tab title="扫码支付"
               titleStyle={styles.tabTitle}
-              selected={selectedName === 'payment'}
-              onPress={this.handlePressCreator('payment')}
+              selected={selectedTab === 'payment'}
+              onPress={() => this.changeSelectedTab('payment')}
               selectedTitleStyle={styles.tabTitleSelected}
               renderIcon={iconCreator({ name: 'payment', isSelected: false })}
               renderSelectedIcon={iconCreator({ name: 'payment', isSelected: true })}
