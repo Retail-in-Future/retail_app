@@ -11,7 +11,7 @@ import Header from '../../components/Header'
 import styles from './styles'
 import * as actionCreators from '../../actions/enter'
 
-class Enter extends Component {
+export class Enter extends Component {
   componentDidMount() {
     this.props.generateQRCode(this.props.username)
   }
