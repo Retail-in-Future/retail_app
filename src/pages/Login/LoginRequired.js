@@ -8,7 +8,7 @@ import _ from 'lodash'
 import Login from './Login/Login'
 import { login } from '../../actions/login'
 
-class LoginRequired extends Component {
+export class LoginRequired extends Component {
   isLoggedIn() {
     return !_.isEmpty(this.props.token)
   }
