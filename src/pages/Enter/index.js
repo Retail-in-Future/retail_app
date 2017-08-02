@@ -25,7 +25,6 @@ class Enter extends Component {
 
   handleQRCodeRefresh() {
     // TODO: [Linesh][7/28/17] develop a general axios middleware
-    // TODO: [Linesh][8/1/17] simplify redux structure design
     this.props.generateQRCode(this.props.username)
   }
 
