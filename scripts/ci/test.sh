@@ -31,7 +31,7 @@ set -o errexit -o nounset \
 \
 && yarn install \
 && yarn lint \
-&& yarn test -- --coverage\
+&& yarn test -- --coverage --verbose\
 EOF
 
 popd
