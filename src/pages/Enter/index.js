@@ -24,7 +24,6 @@ class Enter extends Component {
   }
 
   handleQRCodeRefresh() {
-    // TODO: [Linesh][7/28/17] develop a general axios middleware
     this.props.generateQRCode(this.props.username)
   }
 
