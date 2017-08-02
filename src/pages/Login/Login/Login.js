@@ -20,7 +20,15 @@ export class Login extends Component {
       loginDisabled: true
     }
 
+    this.onUsernameChanged = this.onUsernameChanged.bind(this)
     this.onPasswordChanged = this.onPasswordChanged.bind(this)
+  }
+
+  onUsernameChanged(username) {
+    this.props.updateUsername(username)
+    this.setState({
+      loginDisabled: _.isEmpty(username) || _.isEmpty(this.state.password)
+    })
   }
 
   onPasswordChanged(password) {
@@ -31,7 +39,7 @@ export class Login extends Component {
   }
 
   render() {
-    const { username, errorMessage, updateUsername, onLogin } = this.props
+    const { username, errorMessage, onLogin } = this.props
 
     return (
       <View style={styles.loginComponent}>
@@ -42,14 +50,7 @@ export class Login extends Component {
             placeholderTextColor="gray"
             autoCapitalize="none"
             autoFocus
-            onChangeText={
-              (updatedUsername) => {
-                updateUsername(updatedUsername)
-                this.setState({
-                  loginDisabled: _.isEmpty(updatedUsername) || _.isEmpty(this.state.password)
-                })
-              }
-            }
+            onChangeText={this.onUsernameChanged}
           />
         </View>
         <View style={styles.inputWrapper}>
