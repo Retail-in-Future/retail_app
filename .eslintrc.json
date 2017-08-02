@@ -14,6 +14,7 @@
     "indent": [ "error", 2 ],
     "semi": [ "error", "never" ],
     "comma-dangle": [ "error", "never" ],
+    "consistent-return": "off",
     "react/require-default-props": "off",
     "react/jsx-filename-extension": "off", // React Native apps wouldn't need a .jsx suffix?
     "react/jsx-first-prop-new-line": [ "error", "never" ]

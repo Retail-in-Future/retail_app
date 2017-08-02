@@ -40,5 +40,14 @@ describe('Enter action creators', () => {
 
       expect(dispatch).toHaveBeenCalledWith({ type: RECEIVE_QRCODE, payload: { username, token: '@@init' } })
     })
+
+    it('should not dispatch any actions when username is empty', async () => {
+      const dispatch = jest.fn()
+      mock.onAny().reply(200, { token: '@@any' })
+
+      await generateQRCode('')(dispatch)
+
+      expect(dispatch).not.toHaveBeenCalled()
+    })
   })
 })
