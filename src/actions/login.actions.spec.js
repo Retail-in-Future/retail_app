@@ -81,6 +81,43 @@ describe('Login action creators', () => {
       expect(dispatch).toHaveBeenCalledWith(expectedReceiveTokenAction)
     })
 
+    it('should call authentication url and dispatch UPDATE_ERROR_MESSAGE action when url returns 401 for invalid credentials', async () => {
+      const username = 'admin'
+      const password = 'invalid-me'
+      const dispatch = jest.fn()
+      const expectedUpdateErrorMessageAction = {
+        type: UPDATE_ERROR_MESSAGE,
+        payload: {
+          errorMessage: 'Invalid credentials'
+        }
+      }
+
+      mock.onPost(authenticationUrl, params(username, password)).reply(401, {
+        error_description: 'Invalid credentials'
+      })
+
+      await login(username, password)(dispatch)
+
+      expect(dispatch).toHaveBeenCalledWith(expectedUpdateErrorMessageAction)
+    })
+
+    it('should call authentication url and dispatch UPDATE_ERROR_MESSAGE action when authentication server cannot be contacted', async () => {
+      const username = 'admin'
+      const password = 'admin'
+      const dispatch = jest.fn()
+      const expectedUpdateErrorMessageAction = {
+        type: UPDATE_ERROR_MESSAGE,
+        payload: {
+          errorMessage: 'No response from authentication server. Maybe try again later.'
+        }
+      }
+      mock.onPost(authenticationUrl, params(username, password)).networkError()
+
+      await login(username, password)(dispatch)
+
+      expect(dispatch).toHaveBeenCalledWith(expectedUpdateErrorMessageAction)
+    })
+
     beforeAll(() => {
       mock = new MockAdapter(axios)
     })
