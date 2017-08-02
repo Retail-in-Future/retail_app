@@ -30,4 +30,12 @@ describe('Login component', () => {
     expect(passwordField.prop('autoCapitalize')).toBe('none')
     expect(passwordField.prop('placeholder')).toBe('Password')
   })
+
+  it('should disable login button when username is empty', () => {
+    component = shallow(<Login username="" />)
+
+    expect(component.find(Button).prop('disabled')).toBe(true)
+  })
+
+
 })

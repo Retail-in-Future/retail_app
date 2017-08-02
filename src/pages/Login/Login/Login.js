@@ -54,6 +54,7 @@ export class Login extends Component {
 
         <View>
           <Button title="Login"
+            disabled
             buttonStyle={styles.loginButton}
             backgroundColor="#397af8"
             onPress={() => onLogin(username, this.state.password)}
