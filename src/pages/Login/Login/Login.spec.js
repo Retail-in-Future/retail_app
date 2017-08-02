@@ -52,4 +52,13 @@ describe('Login component', () => {
 
     expect(component.find(Button).prop('disabled')).toBe(false)
   })
+
+  it('should call login function when login button is clicked', () => {
+    const onLogin = jest.fn()
+    component = shallow(<Login username="admin" onLogin={onLogin} />)
+
+    component.find(Button).simulate('Press')
+
+    expect(onLogin).toHaveBeenCalledWith('admin', '')
+  })
 })
