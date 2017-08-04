@@ -8,12 +8,12 @@ import QRCode from './QRCode'
 
 import styles from './styles'
 
-const QRCodeContainer = ({ qrcode, generateQRCode }) => (
+const QRCodeContainer = ({ qrcode, onRefresh }) => (
   <View style={styles.body}>
     <QRCode qrcode={qrcode} />
     <Button icon={{ name: 'refresh' }}
       backgroundColor="#03A9F4"
-      onPress={generateQRCode}
+      onPress={onRefresh}
       buttonStyle={styles.buttonStyle}
       title="刷新二维码"
     />
@@ -22,7 +22,7 @@ const QRCodeContainer = ({ qrcode, generateQRCode }) => (
 
 QRCodeContainer.propTypes = {
   qrcode: PropTypes.string,
-  generateQRCode: PropTypes.func
+  onRefresh: PropTypes.func
 }
 
 export default QRCodeContainer

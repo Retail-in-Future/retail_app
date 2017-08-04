@@ -10,17 +10,17 @@ import QRCodeContainer from '../../components/QRCode'
 import styles from './styles'
 import * as actions from '../../actions/enter'
 
-const Payment = ({ qrcode, generateQRCode }) => (
+const Payment = ({ qrcode, generatePaymentQRCode }) => (
   <View style={styles.container}>
     <Header title="扫码支付" />
 
-    <QRCodeContainer qrcode={qrcode} generateQRCode={generateQRCode} />
+    <QRCodeContainer qrcode={qrcode} onRefresh={generatePaymentQRCode} />
   </View>
 )
 
 Payment.propTypes = {
   qrcode: PropTypes.string,
-  generateQRCode: PropTypes.func
+  generatePaymentQRCode: PropTypes.func
 }
 
 const mapStateToProps = state => ({
@@ -28,7 +28,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  generateQRCode: () => dispatch(actions.generatePaymentQRCode())
+  generatePaymentQRCode: () => dispatch(actions.generatePaymentQRCode())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Payment)

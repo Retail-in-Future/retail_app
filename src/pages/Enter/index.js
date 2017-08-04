@@ -10,16 +10,16 @@ import QRCodeContainer from '../../components/QRCode'
 import styles from './styles'
 import * as actions from '../../actions/enter'
 
-const Enter = ({ qrcode, generateQRCode }) => (
+const Enter = ({ qrcode, generateEnterQRCode }) => (
   <View style={styles.container}>
     <Header title="扫码进入" />
-    <QRCodeContainer qrcode={qrcode} generateQRCode={generateQRCode} />
+    <QRCodeContainer qrcode={qrcode} onRefresh={generateEnterQRCode} />
   </View>
 )
 
 Enter.propTypes = {
   qrcode: PropTypes.string,
-  generateQRCode: PropTypes.func
+  generateEnterQRCode: PropTypes.func
 }
 
 const mapStateToProps = state => ({
@@ -27,7 +27,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  generateQRCode: () => dispatch(actions.generateEnterQRCode())
+  generateEnterQRCode: () => dispatch(actions.generateEnterQRCode())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Enter)
