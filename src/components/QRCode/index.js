@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 
 import { View } from 'react-native'
 import { Button } from 'react-native-elements'
@@ -26,8 +25,4 @@ QRCodeContainer.propTypes = {
   generateQRCode: PropTypes.func
 }
 
-const mapStateToProps = state => ({
-  qrcode: state.enter.qrcode
-})
-
-export default connect(mapStateToProps)(QRCodeContainer)
+export default QRCodeContainer
