@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import { View } from 'react-native'
 import { Tabs, Tab, Icon } from 'react-native-elements'
 
+import LoginRequired from '../../pages/Login/LoginRequired'
 import Enter from '../../pages/Enter'
 import OrderList from '../../pages/Orders'
-import LoginRequired from '../../pages/Login/LoginRequired'
+import Payment from '../../pages/Payment'
 
 import styles from './styles'
 
@@ -66,7 +67,7 @@ export default class TabBar extends Component {
               renderIcon={iconCreator({ name: 'payment', isSelected: false })}
               renderSelectedIcon={iconCreator({ name: 'payment', isSelected: true })}
             >
-              <Enter action="payment" />
+              <Payment action="payment" />
             </Tab>
           </Tabs>
 
