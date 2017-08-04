@@ -53,8 +53,8 @@ export default class TabBar extends Component {
               selected={selectedTab === 'orders'}
               onPress={() => this.changeSelectedTab('orders')}
               selectedTitleStyle={styles.tabTitleSelected}
-              renderIcon={iconCreator({ name: 'orders', isSelected: false })}
-              renderSelectedIcon={iconCreator({ name: 'orders', isSelected: true })}
+              renderIcon={iconCreator({ name: 'list', isSelected: false })}
+              renderSelectedIcon={iconCreator({ name: 'list', isSelected: true })}
             >
               <OrderList />
             </Tab>
