@@ -34,18 +34,21 @@ describe('Enter action creators', () => {
     it('should dispatch a RECEIVE_QRCODE action with username and token when qrcode service returns a valid token for user', async () => {
       const username = 'admin'
       const dispatch = jest.fn()
+      const getState = () => ({ credentials: { username } })
       mock.onPost(qrcodeServiceUrl, { uid: 'admin' }).reply(200, { token: '@@init' })
 
-      await generateQRCode(username)(dispatch)
+      await generateQRCode()(dispatch, getState)
 
       expect(dispatch).toHaveBeenCalledWith({ type: RECEIVE_QRCODE, payload: { username, token: '@@init' } })
     })
 
     it('should not dispatch any actions when username is empty', async () => {
+      const username = ''
       const dispatch = jest.fn()
+      const getState = () => ({ credentials: { username } })
       mock.onAny().reply(200, { token: '@@any' })
 
-      await generateQRCode('')(dispatch)
+      await generateQRCode()(dispatch, getState)
 
       expect(dispatch).not.toHaveBeenCalled()
     })
