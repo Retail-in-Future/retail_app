@@ -10,7 +10,7 @@ import QRCode from './QRCode'
 import styles from './styles'
 import * as actionCreators from '../../actions/enter'
 
-const QRCodeWrapper = ({ qrcode, generateQRCode }) => (
+const QRCodeContainer = ({ qrcode, generateQRCode }) => (
   <View style={styles.body}>
     <QRCode qrcode={qrcode} />
     <Button icon={{ name: 'refresh' }}
@@ -22,7 +22,7 @@ const QRCodeWrapper = ({ qrcode, generateQRCode }) => (
   </View>
 )
 
-QRCodeWrapper.propTypes = {
+QRCodeContainer.propTypes = {
   qrcode: PropTypes.string,
   generateQRCode: PropTypes.func
 }
@@ -35,4 +35,4 @@ const mapDispatchToProps = dispatch => ({
   generateQRCode: () => dispatch(actionCreators.generateQRCode())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(QRCodeWrapper)
+export default connect(mapStateToProps, mapDispatchToProps)(QRCodeContainer)
