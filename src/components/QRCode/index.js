@@ -8,7 +8,6 @@ import { Button } from 'react-native-elements'
 import QRCode from './QRCode'
 
 import styles from './styles'
-import * as actionCreators from '../../actions/enter'
 
 const QRCodeContainer = ({ qrcode, generateQRCode }) => (
   <View style={styles.body}>
@@ -31,8 +30,4 @@ const mapStateToProps = state => ({
   qrcode: state.enter.qrcode
 })
 
-const mapDispatchToProps = dispatch => ({
-  generateQRCode: () => dispatch(actionCreators.generateQRCode())
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(QRCodeContainer)
+export default connect(mapStateToProps)(QRCodeContainer)
