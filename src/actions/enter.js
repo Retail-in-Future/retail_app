@@ -20,3 +20,11 @@ export const generateQRCode = () => (dispatch, getState) => {
     .then(response => dispatch(receiveQRCode(username, response.data.token)))
     .catch(() => {})
 }
+
+export const generatePaymentQRCode = () => (dispatch, getState) => {
+  const { username } = getState().credentials
+
+  if (_.isEmpty(username)) return
+
+
+}
