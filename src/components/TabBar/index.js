@@ -50,11 +50,11 @@ export default class TabBar extends Component {
             </Tab>
             <Tab title="购买记录"
               titleStyle={styles.tabTitle}
-              selected={selectedTab === 'list'}
-              onPress={() => this.changeSelectedTab('list')}
+              selected={selectedTab === 'orders'}
+              onPress={() => this.changeSelectedTab('orders')}
               selectedTitleStyle={styles.tabTitleSelected}
-              renderIcon={iconCreator({ name: 'list', isSelected: false })}
-              renderSelectedIcon={iconCreator({ name: 'list', isSelected: true })}
+              renderIcon={iconCreator({ name: 'orders', isSelected: false })}
+              renderSelectedIcon={iconCreator({ name: 'orders', isSelected: true })}
             >
               <OrderList />
             </Tab>
