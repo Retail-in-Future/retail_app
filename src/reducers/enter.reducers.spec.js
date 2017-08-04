@@ -10,7 +10,8 @@ describe('Enter reducers', () => {
 
   it('should return qrcode admin$1234 when received a RECEIVE_QRCODE action given username is admin and token is 1234', () => {
     const initState = {
-      qrcode: ''
+      qrcode: '',
+      paymentQRCode: ''
     }
     const action = {
       type: RECEIVE_QRCODE,
@@ -20,7 +21,8 @@ describe('Enter reducers', () => {
       }
     }
     const expected = {
-      qrcode: 'admin$1234'
+      qrcode: 'admin$1234',
+      paymentQRCode: ''
     }
 
     const result = reducers(initState, action)

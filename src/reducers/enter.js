@@ -12,6 +12,7 @@ const reducers = {
     const { username, token } = action.payload
 
     return {
+      ...state,
       qrcode: `${username}$${token}`
     }
   },
