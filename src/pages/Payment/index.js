@@ -13,6 +13,7 @@ import * as actions from '../../actions/enter'
 const Payment = ({ generateQRCode }) => (
   <View style={styles.container}>
     <Header title="扫码支付" />
+
     <QRCodeContainer generateQRCode={generateQRCode} />
   </View>
 )
