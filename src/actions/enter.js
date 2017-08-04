@@ -1,11 +1,11 @@
 import axios from 'axios'
 import _ from 'lodash'
 
-import { RECEIVE_QRCODE, RECEIVE_PAYMENT_QRCODE } from './actionTypes'
+import { RECEIVE_ENTER_QRCODE, RECEIVE_PAYMENT_QRCODE } from './actionTypes'
 
 // TODO: [Linesh][8/4/17] looks a lot of duplications here
-export const receiveQRCode = (username, token) => ({
-  type: RECEIVE_QRCODE,
+export const receiveEnterQRCode = (username, token) => ({
+  type: RECEIVE_ENTER_QRCODE,
   payload: {
     username,
     token
@@ -18,7 +18,7 @@ export const generateEnterQRCode = () => (dispatch, getState) => {
   if (_.isEmpty(username)) return
 
   return axios.post('http://10.207.11.201:5000/token', { uid: username })
-    .then(response => dispatch(receiveQRCode(username, response.data.token)))
+    .then(response => dispatch(receiveEnterQRCode(username, response.data.token)))
     .catch(() => {})
 }
 

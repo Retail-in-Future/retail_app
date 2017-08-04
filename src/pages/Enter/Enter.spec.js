@@ -5,7 +5,7 @@ describe.skip('Enter component', () => {
 
   beforeEach(() => {
     // https://github.com/facebook/react-native/issues/12440
-    // component = shallow(<Enter username="admin" qrcode="admin$token" />)
+    // component = shallow(<Enter username="admin" enterQRCode="admin$token" />)
   })
 
   it('should render a header with title 扫码进入', () => {

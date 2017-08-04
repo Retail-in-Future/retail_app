@@ -23,7 +23,7 @@ Enter.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  qrcode: state.enter.qrcode
+  qrcode: state.enter.enterQRCode
 })
 
 const mapDispatchToProps = dispatch => ({

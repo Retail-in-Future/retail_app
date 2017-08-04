@@ -1,19 +1,19 @@
 import { handleActions } from 'redux-actions'
 
-import { RECEIVE_PAYMENT_QRCODE, RECEIVE_QRCODE } from '../actions/actionTypes'
+import { RECEIVE_PAYMENT_QRCODE, RECEIVE_ENTER_QRCODE } from '../actions/actionTypes'
 
 const initState = {
-  qrcode: '',
+  enterQRCode: '',
   paymentQRCode: ''
 }
 
 const reducers = {
-  [RECEIVE_QRCODE]: (state, action) => {
+  [RECEIVE_ENTER_QRCODE]: (state, action) => {
     const { username, token } = action.payload
 
     return {
       ...state,
-      qrcode: `${username}$${token}`
+      enterQRCode: `${username}$${token}`
     }
   },
   [RECEIVE_PAYMENT_QRCODE]: (state, action) => {
