@@ -3,12 +3,14 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import { View } from 'react-native'
-
-import QRCode from '../../components/QRCode'
+import { Button } from 'react-native-elements'
 
 import Header from '../../components/Header'
-import styles from './styles'
+import QRCode from '../../components/QRCode'
+
 import * as actionCreators from '../../actions/enter'
+
+import styles from './styles'
 
 export class Enter extends Component {
   componentDidMount() {
@@ -19,7 +21,17 @@ export class Enter extends Component {
     return (
       <View style={styles.container}>
         <Header title="扫码进入" />
-        <QRCode {...this.props} />
+
+        <View style={styles.body}>
+          <QRCode qrcode={this.props.qrcode} />
+          <Button icon={{ name: 'refresh' }}
+            backgroundColor="#03A9F4"
+            onPress={this.props.generateQRCode}
+            buttonStyle={styles.buttonStyle}
+            title="刷新二维码"
+          />
+        </View>
+
       </View>
     )
   }
