@@ -1,25 +1,49 @@
 /* eslint-disable curly */
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
-import { Text, View } from 'react-native'
-import QrCode from 'react-native-qrcode'
+import { View } from 'react-native'
+import { Button } from 'react-native-elements'
+
+import QRCode from './QRCode'
 
 import styles from './styles'
+import * as actionCreators from '../../actions/enter'
 
-export default function QRCode({ qrcode }) {
-  if (!qrcode) return (
-    <Text style={styles.text}>二维码生成失败。请刷新重试……</Text>
-  )
+class QRCodeWrapper extends Component {
+  componentDidMount() {
+    this.props.generateQRCode()
+  }
 
-  return (
-    <View>
-      <QrCode value={qrcode} size={300} />
-      <Text style={styles.text}>请将手机屏幕对准扫描器</Text>
-    </View>
-  )
+  render() {
+    const { qrcode, generateQRCode } = this.props
+
+    return (
+      <View style={styles.body}>
+        <QRCode qrcode={qrcode} />
+        <Button icon={{ name: 'refresh' }}
+          backgroundColor="#03A9F4"
+          onPress={generateQRCode}
+          buttonStyle={styles.buttonStyle}
+          title="刷新二维码"
+        />
+      </View>
+    )
+  }
 }
 
-QRCode.propTypes = {
-  qrcode: PropTypes.string
+QRCodeWrapper.propTypes = {
+  qrcode: PropTypes.string,
+  generateQRCode: PropTypes.func
 }
+
+const mapStateToProps = state => ({
+  qrcode: state.enter.qrcode
+})
+
+const mapDispatchToProps = dispatch => ({
+  generateQRCode: () => dispatch(actionCreators.generateQRCode())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(QRCodeWrapper)

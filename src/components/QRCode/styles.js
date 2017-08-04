@@ -5,5 +5,11 @@ export default StyleSheet.create({
     textAlign: 'center',
     marginTop: 20,
     marginBottom: 20
+  },
+  body: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 })
