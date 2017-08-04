@@ -11,7 +11,9 @@ export const receiveQRCode = (username, token) => ({
   }
 })
 
-export const generateQRCode = username => (dispatch) => {
+export const generateQRCode = () => (dispatch, getState) => {
+  const { username } = getState().credentials
+
   if (_.isEmpty(username)) return
 
   return axios.post('http://10.207.11.201:5000/token', { uid: username })
