@@ -10,7 +10,7 @@
     "ios": "react-native-scripts ios",
     "lint": "eslint src --ext .js,.jsx",
     "test": "node node_modules/jest/bin/jest.js",
-    "debug": "open 'rndebugger://set-debugger-loc?host=localhost&port=19001'",
+    "debug": "open 'rndebugger://set-debugger-loc?host=localhost&port=19003'",
     "devtools": "react-devtools"
   },
   "jest": {
