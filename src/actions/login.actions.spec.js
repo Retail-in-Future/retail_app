@@ -58,7 +58,7 @@ describe('Login action creators', () => {
     it('should call authentication url and dispatch RECEIVE_TOKEN action, CLEAR_ERROR_MESSAGE and GENERATE_QRCODE action when successfully authenticated', async () => {
       const username = 'admin'
       const password = 'admin'
-      actions.generateQRCode = jest.fn()
+      actions.generateEnterQRCode = jest.fn()
       const dispatch = jest.fn()
       const expectedClearErrorMessageAction = {
         type: UPDATE_ERROR_MESSAGE,
@@ -81,7 +81,7 @@ describe('Login action creators', () => {
 
       expect(dispatch).toHaveBeenCalledWith(expectedClearErrorMessageAction)
       expect(dispatch).toHaveBeenCalledWith(expectedReceiveTokenAction)
-      expect(actions.generateQRCode).toHaveBeenCalled()
+      expect(actions.generateEnterQRCode).toHaveBeenCalled()
     })
 
     it('should call authentication url and dispatch UPDATE_ERROR_MESSAGE action when url returns 401 for invalid credentials', async () => {

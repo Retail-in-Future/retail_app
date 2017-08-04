@@ -12,7 +12,7 @@ export const receiveQRCode = (username, token) => ({
   }
 })
 
-export const generateQRCode = () => (dispatch, getState) => {
+export const generateEnterQRCode = () => (dispatch, getState) => {
   const { username } = getState().credentials
 
   if (_.isEmpty(username)) return

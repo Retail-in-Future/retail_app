@@ -27,7 +27,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  generateQRCode: () => dispatch(actions.generateQRCode())
+  generateQRCode: () => dispatch(actions.generateEnterQRCode())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Enter)

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 
-import { generatePaymentQRCode, generateQRCode, receiveQRCode } from './enter'
+import { generatePaymentQRCode, generateEnterQRCode, receiveQRCode } from './enter'
 import { RECEIVE_QRCODE, RECEIVE_PAYMENT_QRCODE } from './actionTypes'
 
 describe('Enter action creators', () => {
@@ -38,18 +38,18 @@ describe('Enter action creators', () => {
       const getState = () => ({ credentials: { username } })
       mock.onPost(qrcodeServiceUrl, { uid: 'admin' }).reply(200, { token: '@@init' })
 
-      await generateQRCode()(dispatch, getState)
+      await generateEnterQRCode()(dispatch, getState)
 
       expect(dispatch).toHaveBeenCalledWith({ type: RECEIVE_QRCODE, payload: { username, token: '@@init' } })
     })
 
-    it('should not dispatch any actions when generateQRCode() is called given username is empty', async () => {
+    it('should not dispatch any actions when generateEnterQRCode() is called given username is empty', async () => {
       const username = ''
       const dispatch = jest.fn()
       const getState = () => ({ credentials: { username } })
       mock.onAny().reply(200, { token: '@@any' })
 
-      await generateQRCode()(dispatch, getState)
+      await generateEnterQRCode()(dispatch, getState)
 
       expect(dispatch).not.toHaveBeenCalled()
     })
