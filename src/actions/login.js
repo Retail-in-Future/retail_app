@@ -2,7 +2,7 @@ import axios from 'axios'
 import qs from 'querystring'
 
 import { UPDATE_USERNAME, RECEIVE_TOKEN, UPDATE_ERROR_MESSAGE } from './actionTypes'
-import { generateEnterQRCode } from './enter'
+import { generateEnterQRCode, generatePaymentQRCode } from './enter'
 
 export const updateUsername = username => ({
   type: UPDATE_USERNAME,
@@ -40,6 +40,7 @@ export const login = (username, password) => (dispatch) => {
       dispatch(clearErrorMessage())
       dispatch(receiveToken(response.data.access_token))
       dispatch(generateEnterQRCode())
+      dispatch(generatePaymentQRCode())
     })
     .catch((error) => {
       const errorMessage = error.response && error.response.status === 401 ?
