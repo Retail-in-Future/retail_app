@@ -21,8 +21,8 @@ describe('Enter action creators', () => {
 
   describe('async action creators', () => {
     let mock
-    const qrcodeServiceUrl = 'http://10.207.11.201:5000/enter_token'
-    const paymentQRCodeServiceUrl = 'http://10.207.11.201:5000/pay_token'
+    const qrcodeServiceUrl = 'http://10.207.11.202:5000/enter_token'
+    const paymentQRCodeServiceUrl = 'http://10.207.11.202:5000/pay_token'
 
     beforeEach(() => {
       mock = new MockAdapter(axios)

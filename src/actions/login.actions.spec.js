@@ -47,7 +47,9 @@ describe('Login action creators', () => {
 
   describe('async action creators', () => {
     let mock
-    const authenticationUrl = 'http://10.207.11.201:9000/auth/realms/master/protocol/openid-connect/token'
+    // TODO: [Linesh][8/10/17] Bad smell: maintaining this url in prod & test code,
+    // which causes modifications in two places for one change
+    const authenticationUrl = 'http://10.207.11.202:9000/auth/realms/master/protocol/openid-connect/token'
     const params = (username, password) => qs.stringify({
       username,
       password,

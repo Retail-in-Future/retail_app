@@ -17,7 +17,7 @@ export const generateEnterQRCode = () => (dispatch, getState) => {
 
   if (_.isEmpty(username)) return
 
-  return axios.post('http://10.207.11.201:5000/enter_token', { uid: username })
+  return axios.post('http://10.207.11.202:5000/enter_token', { uid: username })
     .then(response => dispatch(receiveEnterQRCode(username, response.data.token)))
     .catch(() => {})
 }
@@ -35,7 +35,7 @@ export const generatePaymentQRCode = () => (dispatch, getState) => {
 
   if (_.isEmpty(username)) return
 
-  return axios.post('http://10.207.11.201:5000/pay_token', { uid: username })
+  return axios.post('http://10.207.11.202:5000/pay_token', { uid: username })
     .then(response => dispatch(receivePaymentQRCode(username, response.data.token)))
     .catch(() => {})
 }
